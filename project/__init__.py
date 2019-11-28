@@ -29,5 +29,3 @@ def create_app(config_name):
 if __name__ == '__main__':
     appp = create_app('develop')
     appp.run()
-
-

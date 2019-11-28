@@ -2,7 +2,9 @@ import time
 import csv
 from . import api
 from project import db
-from flask import jsonify
+from flask import request, jsonify, current_app
+from log_manager import logger
+from project.utils.response_code import RET
 
 collection = db['panel']
 
@@ -14,14 +16,23 @@ def index():
 
 @api.route('/gen_csv')
 def gen_csv():
+    hours = request.args.get('hours', '4')
+    try:
+        hours = int(hours)
+    except Exception as e:
+        logger.error(e)
+        return jsonify(errno=RET.PARAMERR, msg='param must be a integer')
+
     flag = True
-    timestamp = ''
+    timestamp = time.time()
     csv_data = [
         ["组件条码", "机台号", "判定用时", "返工组件？", "结果上传时间", "综合结果(OK/NG)",
          "AI判定结果", "复核后结果", "外观判定结果(OK / NG)"],
 
     ]
-    res = collection.find({"create_time": {"$gt": time.time() - 4 * 3600}}).sort('create_time', -1)
+    res = collection.find({"create_time": {"$gt": time.time() - hours * 3600}}).sort('create_time', -1)
+    if not res.count():
+        return jsonify(errno=RET.NODATA, msg='there is no matching data')
     for i in res:
         filed = list()
         if not i.get('barcode'):
