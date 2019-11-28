@@ -1,0 +1,19 @@
+{
+  "_id": "5dd02a",
+  "mes_defects": {},
+  "ap_result": "OK",
+  "defects": [],
+  "barcode": 9988776,
+  "cell_type": "mono",
+  "origin_defects": {},
+  "cell_shape": "half",
+  "status": [
+    {"by": "AI", "result": "OK"},
+    {"by": "OP", "result": "OK"}
+  ],
+  "el_no": "1",
+  "ap_defects": {},
+  "cell_amount": 144,
+  "create_time": 10.0,
+  "display_mode": 1
+}

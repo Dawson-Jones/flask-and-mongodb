@@ -1,10 +1,12 @@
 from flask import Flask
 from pymongo import MongoClient
 from config import config_map
-from project.utils.commons import Reconverter
+from project.utils.commons import ReConverter
 
-client = None
-db = None
+# client = None
+# db = None
+client = MongoClient('mongodb://root:123456@192.168.2.52:27027', serverSelectionTimeoutMS=5)
+db = client['tttt']
 
 
 def create_app(config_name):
@@ -16,10 +18,10 @@ def create_app(config_name):
     client = MongoClient(config_class.PYMONGO_DATABASE_URL, serverSelectionTimeoutMS=5)
     db = client['tttt']
 
-    app.url_map.converters['re'] = Reconverter
+    app.url_map.converters['re'] = ReConverter
 
-    from project import save_csv
-    app.register_blueprint(save_csv.api, url_prefix='/api')
+    from project import panel
+    app.register_blueprint(panel.api)
 
     return app
 

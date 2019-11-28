@@ -5,7 +5,7 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/../genarator_csv/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (jdq)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -14,7 +14,7 @@
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/templates" />
+        <option value="$MODULE_DIR$/../genarator_csv/templates" />
       </list>
     </option>
   </component>
