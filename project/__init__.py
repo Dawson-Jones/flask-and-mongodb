@@ -5,8 +5,8 @@ from project.utils.commons import ReConverter
 
 # client = None
 # db = None
-client = MongoClient('mongodb://root:123456@192.168.2.52:27027', serverSelectionTimeoutMS=5)
-db = client['tttt']
+# client = MongoClient('mongodb://root:123456@192.168.2.52:27027', serverSelectionTimeoutMS=5)
+# db = client['tttt']
 
 
 def create_app(config_name):
@@ -14,9 +14,9 @@ def create_app(config_name):
     config_class = config_map.get(config_name)
     app.config.from_object(config_class)
 
-    global client, db
-    client = MongoClient(config_class.PYMONGO_DATABASE_URL, serverSelectionTimeoutMS=5)
-    db = client['tttt']
+    # global client, db
+    # client = MongoClient(config_class.PYMONGO_DATABASE_URL, serverSelectionTimeoutMS=5)
+    # db = client['tttt']
 
     app.url_map.converters['re'] = ReConverter
 
