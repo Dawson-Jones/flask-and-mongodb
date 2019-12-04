@@ -262,9 +262,6 @@ class Product(object):
         return json.dumps(res), 200 if res else '0', 400
 
     def mes_defects_update(self, info: dict):
-        if info is None:
-            logger.error('incomplete params')
-            return 'incomplete params', 421
         barcode = info.get('barcode')
         create_time = info.get('create_time')
         mes_defects = info.get('mes_defects')
