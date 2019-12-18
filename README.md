@@ -21,6 +21,11 @@
 /root/app/venv/bin/python3 /root/app/venv/bin/gunicorn blogproject.wsgi -D -w 2 -k gthread -b 0.0.0.0:8000
 ```
 
+### tip
+export a container: `sudo docker export <container id> > <name.tar>`  
+import a container snapshot file make it become to image  
+`cat <snapshot.tar> | docker import - <rebo/image name:tag>`
+
 
 
 
