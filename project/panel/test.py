@@ -19,7 +19,6 @@ def html(name):
 @api.route('/test')
 def test():
     return yc_db.user_display()
-    # return json.dumps(1)
 
 # @api.route('/agg')
 # def agg():

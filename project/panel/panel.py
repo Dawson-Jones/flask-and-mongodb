@@ -2,12 +2,13 @@ import time
 import csv
 import random
 from . import api
-from project import db
+# from project import db
 from flask import request, jsonify, current_app
 from log_manager import logger
 from project.utils.response_code import RET
+from yoozen_db.yc_database import panel_collection
 
-collection = db['panel']
+# collection = db['panel']
 
 
 @api.route('/')
@@ -24,16 +25,12 @@ def gen_csv():
         logger.error(e)
         return jsonify(resno=RET.PARAMERR, msg='param must be a integer')
 
-    # csv_data = [
-    #     ["组件条码", "机台号", "判定用时", "返工组件？", "结果上传时间",
-    #      "AI判定结果", "复核后结果", "外观判定结果(OK / NG)", "综合结果(OK/NG)", "STATUS"],
-    # ]
     csv_data = [
         ["组件条码", "机台号", "判定用时", "返工组件？", "结果上传时间",
          "AI判定结果", "复核后结果", "外观判定结果(OK / NG)", "综合结果(OK/NG)"],
     ]
     timestamp = time.time()
-    res = collection.find({"create_time": {"$gt": time.time() - hours * 3600}}).sort('create_time', -1)
+    res = panel_collection.find({"create_time": {"$gt": time.time() - hours * 3600}}).sort('create_time', -1)
     if not res.count():
         return jsonify(resno=RET.NODATA, msg='there is no matching data')
 
@@ -75,14 +72,6 @@ def gen_csv():
             timestamp = i['create_time']
             flag = False
 
-    # file_header = ["组件条码", "机台号", "判定用时", "返工组件？", "结果上传时间", "综合结果(OK/NG)",
-    #                "EL判定结果(OK / NG)", "AI判定结果", "复核后结果", "EL判定不良类型1", "EL判定不良1位置",
-    #                "EL判定不良类型2", "EL判定不良2位置", "EL判定不良类型3", "EL判定不良3位置",
-    #                "EL判定不良类型4", "EL判定不良4位置", "EL判定不良类型5", "EL判定不良5位置",
-    #                "外观判定结果(OK / NG)",
-    #                "外观判定不良类型1", "外观判定不良1位置", "外观判定不良类型2", "外观判定不良2位置",
-    #                "外观判定不良类型3", "外观判定不良3位置", "外观判定不良类型4", "外观判定不良4位置",
-    #                "外观判定不良类型5", "外观判定不良5位置"]
     time_struct = time.localtime(timestamp)
     time_str = time.strftime('%Y-%m-%d %H:%M:%S', time_struct)
     with open(f'./generated_file/{time_str}.csv', 'w', newline='', encoding='utf-8-sig') as f:
@@ -96,7 +85,7 @@ def gen_csv():
 
 @api.route('/barcode/find/<int:barcode>')
 def barcode_find(barcode):
-    result = collection.find_one({"barcode": barcode}, {"_id": 0})
+    result = panel_collection.find_one({"barcode": barcode}, {"_id": 0})
     return jsonify(result)
 
 
@@ -125,8 +114,7 @@ def add_panel():
             'judgement_time': random.randint(1, 5)  # 自己加的
         }
         data_list.append(panel_data)
-        time.sleep(random.randint(1, 3))
 
-    result = collection.insert_many(data_list)
-    print(result.inserted_ids)
-    return jsonify(resno=RET.OK, msg='add success')
+    result = panel_collection.insert_many(data_list)
+    if result.inserted_ids:
+        return jsonify(resno=RET.OK, msg='add success')
