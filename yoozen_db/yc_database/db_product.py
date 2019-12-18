@@ -25,7 +25,7 @@ class Product(object):
         else:
             return True
 
-    def panel_add(self, info: dict):
+    def panel_add(self, info):
         barcode = info.get('barcode')
         create_time = info.get('create_time')
         el_no = info.get('el_no')
@@ -121,7 +121,7 @@ class Product(object):
             else:
                 for key, values, in ai_defects.items():
                     for value in values:
-                        gui_defects_list: list = gui_defects.get(key)
+                        gui_defects_list = gui_defects.get(key)
                         if gui_defects_list and (value in gui_defects_list):
                             defects.append({'type': key, 'position': value, 'by': 'AI', 'status': 'true'})
                             defects.append({'type': key, 'position': value, 'by': 'OP', 'status': 'true'})
@@ -171,7 +171,7 @@ class Product(object):
         logger.info('add panel')
         return '1', 200
 
-    def string_add(self, info: dict):
+    def string_add(self, info):
         image_id = info.get('image_id')
         create_time = info.get('create_time')
         string_line = info.get('string_line')
@@ -231,7 +231,7 @@ class Product(object):
             logger.error('panel limited')
             return "too much panels", 400
 
-    def barcode_find(self, info: dict):
+    def barcode_find(self, info):
         barcode = info.get('barcode')
         print(barcode)
         if not barcode:
@@ -240,7 +240,7 @@ class Product(object):
         res = self.panel_collection.find_one({'barcode': barcode}, {'_id': 0, 'thresholds': 0})
         return res, 200
 
-    def panel_check_last(self, info: dict):
+    def panel_check_last(self, info):
         barcode = info.get('barcode')
         create_time = info.get('create_time')
         if not all([barcode, create_time]):
@@ -249,7 +249,7 @@ class Product(object):
         res = self.panel_collection.find_one({'barcode': barcode, 'create_time': create_time})
         return '1' if res else '0'
 
-    def repair(self, info: dict):
+    def repair(self, info):
         barcode = info.get('barcode')
         if not barcode:
             logger.error('incomplete params')
@@ -261,7 +261,7 @@ class Product(object):
             {'$limit': 1}]))[0]
         return json.dumps(res), 200 if res else '0', 400
 
-    def mes_defects_update(self, info: dict):
+    def mes_defects_update(self, info):
         barcode = info.get('barcode')
         create_time = info.get('create_time')
         mes_defects = info.get('mes_defects')

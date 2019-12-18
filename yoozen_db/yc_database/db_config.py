@@ -63,12 +63,12 @@ class Config(object):
         init_config['cs']['cell_set'][0]['set'] = list_set
         return init_config
 
-    def el_panel_config_modify(self, info: dict):  # TODO: unclear about data structure sent by front-end
+    def el_panel_config_modify(self, info):  # TODO: unclear about data structure sent by front-end
         change_list = list()
         t = time.time()
         el_no = info.get('el_no')
         admin_name = info.get('admin_name')
-        changed_items: dict = info.get('changed_items')
+        changed_items = info.get('changed_items')
 
         if not all([el_no, admin_name, changed_items]):
             logger.error('incomplete params')
@@ -105,13 +105,13 @@ class Config(object):
         else:
             return update(), 422
 
-    def el_string_config_modify(self, info: dict):
+    def el_string_config_modify(self, info):
         t = time.time()
         change_list = list()
         string_line = info.get('string_line')
         admin_name = info.get('admin_name')
         info_time = info.get('time')
-        changed_items: dict = info.get('changed_items')
+        changed_items = info.get('changed_items')
         if not all([string_line, admin_name, changed_items, info_time]):
             logger.error('incomplete params')
             return update(), 400
@@ -142,12 +142,12 @@ class Config(object):
             logger.error("el_no:%s didn't exist" % (info["admin_name"]))
             return update(), 422
 
-    def el_panel_thresholds_modify(self, info: dict):
+    def el_panel_thresholds_modify(self, info):
         t = time.time()
         change_list = list()
         el_no = info.get('el_no')
         admin_name = info.get('admin_name')
-        changed_items: dict = info.get('changed_items')
+        changed_items = info.get('changed_items')
         info_time = info.get('time')
         if not all([el_no, admin_name, changed_items, info_time]):
             logger.error('incomplete params')
@@ -176,12 +176,12 @@ class Config(object):
             logger.error("el_no:%s didn't exist" % admin_name)
             return update(), 422
 
-    def gui_config_modify(self, info: dict):
+    def gui_config_modify(self, info):
         t = time.time()
         change_list = list()
         gui_no = info.get('gui_no')
         admin_name = info.get('admin_name')
-        changed_items: dict = info.get('changed_items')
+        changed_items = info.get('changed_items')
         info_time = info.get('time')
         if not all([gui_no, admin_name, changed_items, info_time]):
             logger.error('incomplete params')
@@ -218,7 +218,7 @@ class Config(object):
             logger.error("gui_no:%s didn't exist" % (info["admin_name"]))
             return update(), 422
 
-    def permission_modify(self, info: dict):
+    def permission_modify(self, info):
         t = time.time()
         # change_list = list()
         admin_name = info.get('admin_name')
@@ -227,7 +227,7 @@ class Config(object):
         if not all([admin_name, changed_items, info_time]):
             logger.error('incomplete params')
             return update(), 400
-        admin_check: dict = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
+        admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
         if admin_check.get('type') != 'yc_admin':
             return 'permission denied', 423
         for i in changed_items:
@@ -260,7 +260,7 @@ class Config(object):
         logger.info('el_config_display')
         return json.dumps(el_config)
 
-    def el_panel_config_check(self, info: dict):
+    def el_panel_config_check(self, info):
         el_no = info.get('el_no')
         if not el_no:
             logger.error('incomplete params')
@@ -272,7 +272,7 @@ class Config(object):
         logger.info('el_panel_config_check')
         return json.dumps(el_check), 200
 
-    def el_string_config_check(self, info: dict):
+    def el_string_config_check(self, info):
         string_line = info.get('string_line')
         if not string_line:
             logger.error('incomplete params')
@@ -283,7 +283,7 @@ class Config(object):
         logger.info('el_string_config_check')
         return json.dumps(el_check), 200
 
-    def gui_config_check(self, info: dict):
+    def gui_config_check(self, info):
         gui_no = info.get('gui_no')
         if not gui_no:
             logger.error('incomplete params')

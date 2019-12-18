@@ -33,7 +33,7 @@ class User(object):
                                       {'_id': 0, "user_pw": 0, "activate": 0}))
         return json.dumps(res), 200
 
-    def user_login_operator(self, info: dict):
+    def user_login_operator(self, info):
         user_name = info.get('user_name')
         user_pw = info.get('user_pw')
         info_time = info.get('time')
@@ -52,7 +52,7 @@ class User(object):
             logger.error("user:%s didn't exist" % user_name)
             return 'login failed', 421
 
-    def user_login_admin(self, info: dict):
+    def user_login_admin(self, info):
         res = dict()
         user_name = info.get('user_name')
         user_pw = info.get('user_pw')
@@ -85,7 +85,7 @@ class User(object):
         logger.info("admin_login_%s" % user_name)
         return json.dumps(res), 200
 
-    def user_logout(self, info: dict):
+    def user_logout(self, info):
         user_name = info.get('user_name')
         info_time = info.get('time')
         if not all([user_name, info_time]):
@@ -107,7 +107,7 @@ class User(object):
             logger.error("user:%s didn't exist" % user_name)
             return "user didn't exist", 400
 
-    def user_add(self, info: dict):
+    def user_add(self, info):
         t = time.time()
         user_name = info.get('user_name')
         user_pw = info.get('user_pw')
@@ -135,7 +135,7 @@ class User(object):
         logger.info("user_add{%s}" % user_name)
         return update(), 200
 
-    def user_delete(self, info: dict):
+    def user_delete(self, info):
         t = time.time()
         user_name = info.get('user_name')
         admin_name = info.get('admin_name')
@@ -163,12 +163,12 @@ class User(object):
         logger.info("user_del_%s" % (info["user_name"]))
         return update(), 200
 
-    def user_modify(self, info: dict):
+    def user_modify(self, info):
         t = time.time()
         change_list = list()
         admin_name = info.get('admin_name')
         user_name = info.get('user_name')
-        changed_items: dict = info.get('changed_items')
+        changed_items = info.get('changed_items')
         info_time = info.get('time')
         cg_user_name = changed_items.get('user_name')
         cg_update_time = changed_items.get('update_time')
@@ -205,10 +205,10 @@ class User(object):
         else:
             return update(), 422
 
-    def user_password_change(self, info: dict):
+    def user_password_change(self, info):
         admin_name = info.get('admin_name')
         user_name = info.get('user_name')
-        changed_items: dict = info.get('changed_items')
+        changed_items = info.get('changed_items')
         info_time = info.get('time')
         user_pw = info.get('user_pw')
         cg_update_time = changed_items.get('update_time')

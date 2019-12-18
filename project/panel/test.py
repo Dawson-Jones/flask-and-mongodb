@@ -13,7 +13,7 @@ def index():
 
 @api.route('/<re(r".*"):name>')
 def html(name):
-    return f'hello, {name}'
+    return 'hello, {}'.format(name)
 
 
 @api.route('/test')
