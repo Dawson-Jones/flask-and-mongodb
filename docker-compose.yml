@@ -1,53 +1,36 @@
 version: "3"
 
 services:
-  db1:
+  database:
     image: mongo
-    container_name: "db1"
-    restart: always
+    container_name: "my-mongo-container"
+    environment:
+      - MONGO_INITDB_DATABASE=yc_db
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=123456
     volumes:
-      - /data/db1:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./mongo-volume:/data/db
     ports:
-      - "27017:27017"
-    command: mongod --config /data/db/mongod.conf.orig
+      - "27017-27019:27017-27019"
 
-  db2:
-    container_name: "db2"
-    image: mongo
-    restart: always
-    volumes:
-      - /data/db2:/data/db
-    ports:
-      - "28018:27017"
-#    command: mongod --config /data/db/mongod.conf
-
-  db3:
-    container_name: "db3"
-    image: mongo
-    restart: always
-    volumes:
-      - /data/db3:/data/db
-    ports:
-      - "29019:27017"
-#    command: mongod --config /data/db/mongod.conf
-
-  back_end_py:
-    container_name: "yc-app"
-    image: yc-app
-    network_mode: host
-    restart: unless-stopped
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./:/usr/src/app
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-    command:
-      - /bin/sh
-      - -c
-      - |
-        cd /usr/src/app
-        gunicorn manager:app -c gunicorn.conf.py
-#        gunicorn -w 4 -D --access-logfile ./log manager:app
-#        gunicorn -w 4 -b 0.0.0.0:5000 -D --access-logfile ./log manager:app
-#        python3 manager.py runserver
+#  back_end_py:
+#    container_name: "yc-app"
+#    image: yc-app
+#    network_mode: host
+#    restart: unless-stopped
+#    ports:
+#      - "5000:5000"
+#    volumes:
+#      - ./:/usr/src/app
+#      - /etc/localtime:/etc/localtime:ro
+#      - /etc/timezone:/etc/timezone:ro
+#    command:
+#      - /bin/sh
+#      - -c
+#      - |
+#        cd /usr/src/app
+#        gunicorn manager:app -c gunicorn.conf.py
+##        gunicorn -w 4 -D --access-logfile ./log manager:app
+##        gunicorn -w 4 -b 0.0.0.0:5000 -D --access-logfile ./log manager:app
+##        python3 manager.py runserver
