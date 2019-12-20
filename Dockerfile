@@ -1,7 +1,7 @@
-FROM ubuntu-flask2:latest
+FROM python:3.8
+WORKDIR /usr/src/app
 MAINTAINER Dobby <jeedq@qq.com>
 COPY requirements.txt ./
-#WORKDIR /app
 RUN pip3 install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
 #EXPOSE 5000
 #ENTRYPOINT ["python"]

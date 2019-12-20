@@ -2,48 +2,51 @@ version: "3"
 
 services:
   db1:
-    image: mongo:3.6.9
-    volumes:
-      - /home/ubuntu/yc_db/DB/data:/data/db
-    ports:
-      - "27027:27017"
+    image: mongo
     container_name: "db1"
-    command: mongod --config /data/db/mongod.yml
+    restart: always
+    volumes:
+      - /data/db1:/data/db
+    ports:
+      - "27017:27017"
+    command: mongod --config /data/db/mongod.conf.orig
 
   db2:
-    image: mongo:3.6.9
-    volumes:
-      - /home/ubuntu/yc_db/DB/data2:/data/db
-    ports:
-      - "27028:27017"
     container_name: "db2"
-    command: mongod --config /data/db/mongod.yml
+    image: mongo
+    restart: always
+    volumes:
+      - /data/db2:/data/db
+    ports:
+      - "28018:27017"
+#    command: mongod --config /data/db/mongod.conf
 
   db3:
-    image: mongo:3.6.9
-    volumes:
-      - /home/ubuntu/yc_db/DB/data3:/data/db
-    ports:
-      - "27029:27017"
     container_name: "db3"
-    command: mongod --config /data/db/mongod.yml
+    image: mongo
+    restart: always
+    volumes:
+      - /data/db3:/data/db
+    ports:
+      - "29019:27017"
+#    command: mongod --config /data/db/mongod.conf
 
   back_end_py:
-    image: jdq/flask:v1
+    container_name: "yc-app"
+    image: yc-app
     network_mode: host
     restart: unless-stopped
     ports:
       - "5000:5000"
-    container_name: "py_back_end"
     volumes:
-      - ./:/home
+      - ./:/usr/src/app
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     command:
       - /bin/sh
       - -c
       - |
-        cd /home
+        cd /usr/src/app
         gunicorn manager:app -c gunicorn.conf.py
 #        gunicorn -w 4 -D --access-logfile ./log manager:app
 #        gunicorn -w 4 -b 0.0.0.0:5000 -D --access-logfile ./log manager:app

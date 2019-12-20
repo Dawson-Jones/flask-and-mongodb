@@ -1,4 +1,4 @@
-from yoozen_db.yc_database import YcDataBase
+from .yc_database import YcDataBase
 
 yc_db = YcDataBase()
 

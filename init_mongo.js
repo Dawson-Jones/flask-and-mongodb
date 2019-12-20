@@ -4,7 +4,7 @@ db.createUser(
         pwd: "123456",
         roles: [
             {
-                role: "userAdminAnyDatabase", 
+                role: "root",
                 db: "admin"
             }
         ]

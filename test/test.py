@@ -1,12 +1,8 @@
-import time
-import os
+from pymongo import MongoClient
 
-ctime = time.strftime('%Y%m%d%H%M%S')
-print(ctime)
-print(type(ctime))
-
-time_p = time.strptime(ctime, '%Y%m%d%H%M%S')
-print(time_p)
-print(time_p.tm_hour)
-
-print(time.strftime('%Y-%m-%d', time.localtime()))
+# MongoDB的客户端
+client = MongoClient("localhost", "27017")
+# MongoDB database
+db = client['jdq']
+# collection 相当于 table
+collection = db['dobby_cc']
