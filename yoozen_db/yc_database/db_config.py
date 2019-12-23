@@ -79,9 +79,10 @@ class Config(object):
         admin_check = self.user_collection.find_one({"user_name": admin_name, "activate": 1})
 
         if el_check and el_check.get("update_time") == changed_items.get("update_time"):
-            limit = list(self.el_config_collection.aggregate([{'$match': {'gui_no': changed_items.get("gui_no")}},
-                                                              {"$group": {'_id': {'_id': '$gui_no'},
-                                                                          'limit': {"$sum": 1}}}]))
+            limit = list(self.el_config_collection.aggregate([
+                {'$match': {'gui_no': changed_items.get("gui_no")}},
+                {"$group": {'_id': {'_id': '$gui_no'}, 'limit': {"$sum": 1}}}
+            ]))
             gui_limit = self.gui_setting_collection.find_one({"gui_no": changed_items.get("gui_no")})
 
             if limit[0]['limit'] + 1 > gui_limit['el_limit']:
@@ -201,10 +202,8 @@ class Config(object):
                 if gui_check["update_time"] == info["changed_items"]["update_time"]:
                     limit = list(self.el_config_collection.aggregate([
                         {'$match': {'gui_no': gui_no}},
-                        {'$group': {
-                            '_id': '$gui_no',
-                            'limit': {'$sum': 1}
-                        }}]))
+                        {'$group': {'_id': '$gui_no', 'limit': {'$sum': 1}}}
+                    ]))
                     if limit[0]['limit'] > int(changed_items['el_limit']):
                         return update(), 412
                     for key, value in changed_items.items():
