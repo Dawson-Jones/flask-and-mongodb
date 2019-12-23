@@ -25,7 +25,3 @@
 export a container: `sudo docker export <container id> > <name.tar>`  
 import a container snapshot file make it become to image  
 `cat <snapshot.tar> | docker import - <rebo/image name:tag>`
-
-
-
-

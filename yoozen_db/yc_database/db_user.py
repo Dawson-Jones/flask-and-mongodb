@@ -44,8 +44,12 @@ class User(object):
         user_check = self.user_collection.find_one(
             {"user_name": user_name, "user_pw": user_pw, "activate": 1})
         if user_check:
-            self.user_log_collection.insert_one({'user_id': user_check['_id'], 'user_name': user_name,
-                                                 'time': info_time, 'action': 'login_%s' % user_name})
+            self.user_log_collection.insert_one({
+                'user_id': user_check['_id'],
+                'user_name': user_name,
+                'time': info_time,
+                'action': 'login_%s' % user_name
+            })
             logger.info("login_%s" % user_name)
             return user_check['type'], 200
         else:
@@ -69,8 +73,12 @@ class User(object):
             return "user didn't exist", 421
         if user_check['type'] == 'operator':
             return "not admin", 421
-        self.user_log_collection.insert_one({'user_id': user_check['_id'], 'user_name': user_name, 'time': info_time,
-                                             'action': "login_%s" % user_name})
+        self.user_log_collection.insert_one({
+            'user_id': user_check['_id'],
+            'user_name': user_name,
+            'time': info_time,
+            'action': "login_%s" % user_name
+        })
 
         res['type'] = user_check['type']
         pre_url = self.url.get(admin_url)
@@ -129,9 +137,12 @@ class User(object):
             return 'user exists', 413
         self.user_collection.insert_one({"user_name": user_name, "user_pw": user_pw, "activate": 1,
                                          "type": user_type, "update_time": t})
-        self.user_log_collection.insert_one(
-            {'admin_id': admin_check["_id"], 'admin_name': admin_name, 'time': info_time,
-             'action': "%s_add_user_%s" % (admin_name, user_name)})
+        self.user_log_collection.insert_one({
+            'admin_id': admin_check["_id"],
+            'admin_name': admin_name,
+            'time': info_time,
+            'action': "%s_add_user_%s" % (admin_name, user_name)
+        })
         logger.info("user_add{%s}" % user_name)
         return update(), 200
 
@@ -157,9 +168,13 @@ class User(object):
         user_check['activate'] = time.time()
         user_check['update_time'] = t
         self.user_collection.replace_one({'user_name': user_name, 'activate': 1}, user_check)
-        self.user_log_collection.insert_one(
-            {'user_id': user_check['_id'], 'admin_id': admin_check['_id'], 'admin_name': admin_name,
-             'time': info_time, 'action': "%s_del_user_%s" % (admin_name, user_name)})
+        self.user_log_collection.insert_one({
+            'user_id': user_check['_id'],
+            'admin_id': admin_check['_id'],
+            'admin_name': admin_name,
+            'time': info_time,
+            'action': "%s_del_user_%s" % (admin_name, user_name)
+        })
         logger.info("user_del_%s" % (info["user_name"]))
         return update(), 200
 
@@ -196,10 +211,14 @@ class User(object):
             changes = '_'.join(change_list)
             user_check['update_time'] = t
             self.user_collection.replace_one({"_id": user_check["_id"], "activate": 1}, user_check)
-            self.user_log_collection.insert_one({'admin_id': admin_check['_id'], 'user_name': user_name,
-                                                 'user_id': user_check['_id'], 'admin_name': admin_name,
-                                                 'time': info_time, 'action': "%s_change_user:%s_%s" % (
-                    admin_name, user_name, changes)})
+            self.user_log_collection.insert_one({
+                'admin_id': admin_check['_id'],
+                'user_name': user_name,
+                'user_id': user_check['_id'],
+                'admin_name': admin_name,
+                'time': info_time,
+                'action': "%s_change_user:%s_%s" % (admin_name, user_name, changes)
+            })
             logger.info("user_modify_%s" % user_name)
             return update(), 200
         else:
@@ -222,9 +241,12 @@ class User(object):
         if user_check['update_time'] == cg_update_time:
             user_check['user_pw'] = user_pw
             self.user_collection.replace_one({'user_name': user_name, 'activate': 1}, user_check)
-            self.user_log_collection.insert_one(
-                {'user_id': admin_check['_id'], 'user_name': admin_name, 'time': info_time,
-                 'action': "%s_password_change{%s}" % (admin_name, user_name)})
+            self.user_log_collection.insert_one({
+                'user_id': admin_check['_id'],
+                'user_name': admin_name,
+                'time': info_time,
+                'action': "%s_password_change{%s}" % (admin_name, user_name)
+            })
             logger.info("password_change{%s}" % user_name)
             return '1', 200
         else:
