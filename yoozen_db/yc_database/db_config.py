@@ -96,10 +96,14 @@ class Config(object):
             changes = '_'.join(change_list)
             el_check["update_time"] = t
             self.el_config_collection.replace_one({"el_no": info["el_no"]}, el_check)
-            self.user_log_collection.insert_one(
-                {'admin_id': admin_check['_id'], 'admin_name': info["admin_name"], 'el_id': el_check.get('_id'),
-                 'el_no': info["el_no"], 'time': info['time'],
-                 'action': "%s_change_el_config:%s_%s" % (info["admin_name"], info["el_no"], changes)})
+            self.user_log_collection.insert_one({
+                'admin_id': admin_check['_id'],
+                'admin_name': info["admin_name"],
+                'el_id': el_check.get('_id'),
+                'el_no': info["el_no"],
+                'time': info['time'],
+                'action': "%s_change_el_config:%s_%s" % (info["admin_name"], info["el_no"], changes)
+            })
             logger.info('el_config_modify')
             return update(), 200
         else:
@@ -163,10 +167,14 @@ class Config(object):
                     changes = '_'.join(change_list)
                     el_check['thresholds']['update_time'] = t
                     self.el_config_collection.replace_one({'el_no': el_no}, el_check)
-                    self.user_log_collection.insert_one(
-                        {'admin_id': admin_check['_id'], 'admin_name': admin_name, 'el_id': el_check['_id'],
-                         'el_no': el_no, 'time': info_time,
-                         'action': "%s_change_el_config:%s_%s" % (admin_name, el_no, changes)})
+                    self.user_log_collection.insert_one({
+                        'admin_id': admin_check['_id'],
+                        'admin_name': admin_name,
+                        'el_id': el_check['_id'],
+                        'el_no': el_no,
+                        'time': info_time,
+                        'action': "%s_change_el_config:%s_%s" % (admin_name, el_no, changes)
+                    })
                     logger.info('thresholds_modify')
                     return update(), 200
             except Exception as e:
@@ -205,10 +213,14 @@ class Config(object):
                     changes = '_'.join(change_list)
                     gui_check['update_time'] = t
                     self.gui_setting_collection.replace_one({"gui_no": gui_no}, gui_check)
-                    self.user_log_collection.insert_one(
-                        {'admin_id': admin_check['_id'], 'admin_name': admin_name, 'gui_id': gui_check['_id'],
-                         'gui_no': gui_no, 'time': info_time,
-                         'action': "%s_change_gui_config:%s_%s" % (admin_name, gui_no, changes)})
+                    self.user_log_collection.insert_one({
+                        'admin_id': admin_check['_id'],
+                        'admin_name': admin_name,
+                        'gui_id': gui_check['_id'],
+                        'gui_no': gui_no,
+                        'time': info_time,
+                        'action': "%s_change_gui_config:%s_%s" % (admin_name, gui_no, changes)
+                    })
                     logger.info('gui_config_modify')
                     return update(), 200
             except Exception as e:
@@ -241,11 +253,14 @@ class Config(object):
                     changes = '_'.join(change_list)
                     permission_check['update_time'] = t
                     self.permission_collection.replace_one({'type': i['type']}, permission_check)
-                    self.user_log_collection.insert_one({'admin_id': admin_check['_id'], 'admin_name': admin_name,
-                                                         'type_id': permission_check['_id'], 'type': i["type"],
-                                                         'time': info_time,
-                                                         'action': "%s_change_permission_config:%s_%s" % (
-                                                             admin_name, i["type"], changes)})
+                    self.user_log_collection.insert_one({
+                        'admin_id': admin_check['_id'],
+                        'admin_name': admin_name,
+                        'type_id': permission_check['_id'],
+                        'type': i["type"],
+                        'time': info_time,
+                        'action': "%s_change_permission_config:%s_%s" % (admin_name, i["type"], changes)
+                    })
                     logger.info('permission_modify')
                 else:
                     return update(), 422
