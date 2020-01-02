@@ -3,6 +3,7 @@ import csv
 with open('url.csv', 'r', newline='') as f:
     reader = csv.DictReader(f)
     num = 0
+    i = dict()
     for csv_url in reader:
         print(csv_url)
         '''
@@ -11,5 +12,7 @@ with open('url.csv', 'r', newline='') as f:
             '192.168.2.26:3000': '192.168.3.131:3001'
         }
         '''
-        print(num)  # 0
-        num += 1
+        i = csv_url
+
+    print(type(i))
+    print(i.get('192.168.2.25:3000'))

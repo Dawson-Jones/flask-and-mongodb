@@ -68,7 +68,7 @@ class Config(object):
         logger.info('el_config_display')
         return json.dumps(el_config)
 
-    def el_panel_config_check(self, info):
+    def el_panel_config_check(self, info: dict):
         el_no = info.get('el_no')
         if not el_no:
             logger.error('incomplete params')
@@ -80,7 +80,7 @@ class Config(object):
         logger.info('el_panel_config_check')
         return json.dumps(el_check), 200
 
-    def el_string_config_check(self, info):
+    def el_string_config_check(self, info: dict):
         string_line = info.get('string_line')
         if not string_line:
             logger.error('incomplete params')
@@ -91,18 +91,18 @@ class Config(object):
         logger.info('el_string_config_check')
         return json.dumps(el_check), 200
 
-    def gui_config_check(self, info):
+    def gui_config_check(self, info: dict):
         gui_no = info.get('gui_no')
         if not gui_no:
             logger.error('incomplete params')
-            return 'incomplete params', 421
+            return 'incomplete params', 421, {'Content-Type': 'application/json'}
         gui_setting_check = self.gui_setting_collection.find_one({'gui_no': gui_no}, {'_id': 0})
         if not gui_setting_check:
-            return 'null', 400
+            return 'null', 400, {'Content-Type': 'application/json'}
         logger.info('gui_config_check')
-        return json.dumps(gui_setting_check), 200
+        return json.dumps(gui_setting_check), 200, {'Content-Type': 'application/json'}
 
-    def el_panel_config_modify(self, info):  # TODO: unclear about data structure sent by front-end
+    def el_panel_config_modify(self, info: dict):  # TODO: unclear about data structure sent by front-end
         change_list = list()
         t = time.time()
         el_no = info.get('el_no')
@@ -149,7 +149,7 @@ class Config(object):
         else:
             return update(), 422
 
-    def el_string_config_modify(self, info):
+    def el_string_config_modify(self, info: dict):
         t = time.time()
         change_list = list()
         string_line = info.get('string_line')
@@ -186,7 +186,7 @@ class Config(object):
             logger.error("el_no:%s didn't exist" % (info["admin_name"]))
             return update(), 422
 
-    def el_panel_thresholds_modify(self, info):
+    def el_panel_thresholds_modify(self, info: dict):
         t = time.time()
         change_list = list()
         el_no = info.get('el_no')
@@ -224,7 +224,7 @@ class Config(object):
             logger.error("el_no:%s didn't exist" % admin_name)
             return update(), 422
 
-    def gui_config_modify(self, info):
+    def gui_config_modify(self, info: dict):
         t = time.time()
         change_list = list()
         gui_no = info.get('gui_no')
@@ -267,44 +267,4 @@ class Config(object):
         else:
             logger.error("gui_no:%s didn't exist" % (info["admin_name"]))
             return update(), 422
-
-    def permission_modify(self, info):
-        t = time.time()
-        # change_list = list()
-        admin_name = info.get('admin_name')
-        changed_items = info.get('changed_items')
-        info_time = info.get('time')
-        if not all([admin_name, changed_items, info_time]):
-            logger.error('incomplete params')
-            return update(), 400
-        admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
-        if admin_check.get('type') != 'yc_admin':
-            return 'permission denied', 423
-        for i in changed_items:
-            change_list = list()
-            try:
-                permission_check = self.permission_collection.find_one({'type': i['type']})
-                if permission_check['update_time'] == i['update_time']:
-                    for key, value in i:
-                        permission_check[key] = value
-                        change_list.append(key)
-                    changes = '_'.join(change_list)
-                    permission_check['update_time'] = t
-                    self.permission_collection.replace_one({'type': i['type']}, permission_check)
-                    self.user_log_collection.insert_one({
-                        'admin_id': admin_check['_id'],
-                        'admin_name': admin_name,
-                        'type_id': permission_check['_id'],
-                        'type': i["type"],
-                        'time': info_time,
-                        'action': "%s_change_permission_config:%s_%s" % (admin_name, i["type"], changes)
-                    })
-                    logger.info('permission_modify')
-                else:
-                    return update(), 422
-            except Exception as e:
-                logger.error(str(e))
-                return update(), 400
-
-        return update(), 200
 

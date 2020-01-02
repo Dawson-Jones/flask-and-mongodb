@@ -2,11 +2,12 @@ import time
 import csv
 import json
 
-from ..utils.log_manager import logger
-from ..utils.update import update
+from yoozen_db.utils.log_manager import logger
+from yoozen_db.utils.update import update
 
 
 class User(object):
+
     def __init__(self,
                  user_collection,
                  permission_collection,
@@ -21,19 +22,20 @@ class User(object):
         self.el_string_collection = el_string_collection
         self.gui_setting_collection = gui_setting_collection
         self.user_log_collection = user_log_collection
-        with open('../SETUP/url.csv', 'r', newline='') as f:
-            reader = csv.DictReader(f)
-            for csv_url in reader:
-                self.url = csv_url
+        # with open('../SETUP/url.csv', 'r', newline='') as f:
+        #     reader = csv.DictReader(f)
+        #     for csv_url in reader:
+        #         self.url = csv_url
 
+    @property
     def user_display(self):
         res = dict()
-        res['user'] = list(
+        res['users'] = list(
             self.user_collection.find({'type': {'$ne': 'yc_admin'}, 'activate': 1},
-                                      {'_id': 0, "user_pw": 0, "activate": 0}))
-        return json.dumps(res), 200
+                                      {'_id': 0, "user_pw": 0, "activate": 0, 'update_time': 0}))
+        return json.dumps(res), 200, {'Content-Type': 'application/json'}
 
-    def user_login_operator(self, info):
+    def user_login_operator(self, info: dict):
         user_name = info.get('user_name')
         user_pw = info.get('user_pw')
         info_time = info.get('time')
@@ -56,7 +58,11 @@ class User(object):
             logger.error("user:%s didn't exist" % user_name)
             return 'login failed', 421
 
-    def user_login_admin(self, info):
+    def user_login_admin(self, info: dict):
+        with open('yoozen_db/SETUP/url.csv', 'r', newline='') as f:
+            reader = csv.DictReader(f)
+            for csv_url in reader:
+                url = csv_url
         res = dict()
         user_name = info.get('user_name')
         user_pw = info.get('user_pw')
@@ -64,15 +70,15 @@ class User(object):
         admin_url = info.get('admin_url')
         if not all([user_name, user_pw, info_time, admin_url]):
             logger.error('incomplete params')
-            return 'incomplete params', 421
+            return 'incomplete params', 421, {'Content-Type': 'application/json'}
 
         user_check = self.user_collection.find_one(
             {"user_name": user_name, "user_pw": user_pw, "activate": 1})
         if not user_check:
             logger.error("user:%s didn't exist" % user_name)
-            return "user didn't exist", 421
+            return "user didn't exist", 421, {'Content-Type': 'application/json'}
         if user_check['type'] == 'operator':
-            return "not admin", 421
+            return "not admin", 421, {'Content-Type': 'application/json'}
         self.user_log_collection.insert_one({
             'user_id': user_check['_id'],
             'user_name': user_name,
@@ -81,7 +87,7 @@ class User(object):
         })
 
         res['type'] = user_check['type']
-        pre_url = self.url.get(admin_url)
+        pre_url = url.get(admin_url)
         res['previous_url'] = user_check.get("previous_url") if user_check.get('previous_url') != pre_url else ''
 
         user_check['previous_url'] = pre_url
@@ -91,14 +97,14 @@ class User(object):
         res['string_setting'] = list(self.el_string_collection.find({}, {'_id': 0}))
         res['gui_setting'] = list(self.gui_setting_collection.find({}, {'_id': 0}))
         logger.info("admin_login_%s" % user_name)
-        return json.dumps(res), 200
+        return json.dumps(res), 200, {'Content-Type': 'application/json'}
 
-    def user_logout(self, info):
+    def user_logout(self, info: dict):
         user_name = info.get('user_name')
         info_time = info.get('time')
         if not all([user_name, info_time]):
             logger.error('incomplete params')
-            return 'incomplete params', 421
+            return 'incomplete params', 421, {'Content-Type': 'application/json'}
 
         user_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
         if user_check:
@@ -115,7 +121,7 @@ class User(object):
             logger.error("user:%s didn't exist" % user_name)
             return "user didn't exist", 400
 
-    def user_add(self, info):
+    def user_add(self, info: dict):
         t = time.time()
         user_name = info.get('user_name')
         user_pw = info.get('user_pw')
@@ -124,17 +130,17 @@ class User(object):
         info_time = info.get('time')
         if not all([user_name, user_pw, admin_name, user_type, info_time]):
             logger.error('incomplete params')
-            return update(), 400
+            return update(), 400, {'Content-Type': 'application/json'}
         admin_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
         if not admin_check:
             logger.error("admin user:%s didn't exist" % admin_name)
-            return "admin user didn't exist", 400
+            return "admin user didn't exist", 400, {'Content-Type': 'application/json'}
         if admin_check['type'] != 'super_admin' and admin_check['type'] != 'yc_admin':
             logger.error("permission denied %s" % admin_name)
-            return update(), 423
+            return update(), 423, {'Content-Type': 'application/json'}
         user_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
         if user_check:
-            return 'user exists', 413
+            return 'user exists', 413, {'Content-Type': 'application/json'}
         self.user_collection.insert_one({"user_name": user_name, "user_pw": user_pw, "activate": 1,
                                          "type": user_type, "update_time": t})
         self.user_log_collection.insert_one({
@@ -144,27 +150,27 @@ class User(object):
             'action': "%s_add_user_%s" % (admin_name, user_name)
         })
         logger.info("user_add{%s}" % user_name)
-        return update(), 200
+        return update(), 200, {'Content-Type': 'application/json'}
 
-    def user_delete(self, info):
+    def user_delete(self, info: dict):
         t = time.time()
         user_name = info.get('user_name')
         admin_name = info.get('admin_name')
         info_time = info.get('time')
         if not all([user_name, admin_name, info_time]):
             logger.error('incomplete params')
-            return update(), 400
+            return update(), 400, {'Content-Type': 'application/json'}
         admin_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
         if not admin_check:
             logger.error("admin user:%s didn't exist" % admin_name)
-            return "admin user didn't exist", 400
+            return "admin user didn't exist", 400, {'Content-Type': 'application/json'}
         if admin_check['type'] != 'super_admin' and admin_check['type'] != 'yc_admin':
             logger.error("permission denied %s" % admin_name)
-            return update(), 423
+            return update(), 423, {'Content-Type': 'application/json'}
         user_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
         if user_check['type'] == 'super_admin' and admin_check['type'] == 'super_admin':
             logger.error("permission denied %s" % (info["admin_name"]))
-            return update(), 423
+            return update(), 423, {'Content-Type': 'application/json'}
         user_check['activate'] = time.time()
         user_check['update_time'] = t
         self.user_collection.replace_one({'user_name': user_name, 'activate': 1}, user_check)
@@ -176,9 +182,9 @@ class User(object):
             'action': "%s_del_user_%s" % (admin_name, user_name)
         })
         logger.info("user_del_%s" % (info["user_name"]))
-        return update(), 200
+        return update(), 200, {'Content-Type': 'application/json'}
 
-    def user_modify(self, info):
+    def user_modify(self, info: dict):
         t = time.time()
         change_list = list()
         admin_name = info.get('admin_name')
@@ -189,21 +195,21 @@ class User(object):
         cg_update_time = changed_items.get('update_time')
         if not all([admin_name, user_name, changed_items, info_time, cg_user_name, cg_update_time]):
             logger.error('incomplete params')
-            return update(), 400
+            return update(), 400, {'Content-Type': 'application/json'}
         admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
         if not admin_check:
             logger.error("user:%s didn't exist" % admin_name)
-            return update(), 422
+            return update(), 422, {'Content-Type': 'application/json'}
         if admin_check['type'] != 'super_admin' and admin_check['type'] == 'yc_admin':
             logger.error("permission denied %s" % (info["admin_name"]))
-            return update(), 423
+            return update(), 423, {'Content-Type': 'application/json'}
         user_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
         if not user_check:
             logger.error("user:%s didn't exist" % user_name)
-            return update(), 422
+            return update(), 422, {'Content-Type': 'application/json'}
         dup = self.user_collection.find_one({'user_name': cg_user_name, 'activate': 1})
         if dup:
-            return update(), 412
+            return update(), 412, {'Content-Type': 'application/json'}
         if user_check['update_time'] == cg_update_time:
             for key, value in changed_items.items():
                 user_check[key] = value
@@ -220,11 +226,11 @@ class User(object):
                 'action': "%s_change_user:%s_%s" % (admin_name, user_name, changes)
             })
             logger.info("user_modify_%s" % user_name)
-            return update(), 200
+            return update(), 200, {'Content-Type': 'application/json'}
         else:
-            return update(), 422
+            return update(), 422, {'Content-Type': 'application/json'}
 
-    def user_password_change(self, info):
+    def user_password_change(self, info: dict):
         admin_name = info.get('admin_name')
         user_name = info.get('user_name')
         changed_items = info.get('changed_items')
@@ -251,3 +257,54 @@ class User(object):
             return '1', 200
         else:
             return update(), 422
+
+    def permission_modify(self, info):
+        t = time.time()
+        # change_list = list()
+        admin_name = info.get('admin_name')
+        changed_items = info.get('changed_items')
+        info_time = info.get('time')
+        if not all([admin_name, changed_items, info_time]):
+            logger.error('incomplete params')
+            return update(), 400, {'Content-Type': 'application/json'}
+        admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
+        if admin_check.get('type') != 'yc_admin':
+            return 'permission denied', 423, {'Content-Type': 'application/json'}
+        for i in changed_items:
+            change_list = list()
+            try:
+                permission_check = self.permission_collection.find_one({'type': i['type']})
+                if permission_check['update_time'] == i['update_time']:
+                    for key, value in i:
+                        permission_check[key] = value
+                        change_list.append(key)
+                    changes = '_'.join(change_list)
+                    permission_check['update_time'] = t
+                    self.permission_collection.replace_one({'type': i['type']}, permission_check)
+                    self.user_log_collection.insert_one({
+                        'admin_id': admin_check['_id'],
+                        'admin_name': admin_name,
+                        'type_id': permission_check['_id'],
+                        'type': i["type"],
+                        'time': info_time,
+                        'action': "%s_change_permission_config:%s_%s" % (admin_name, i["type"], changes)
+                    })
+                    logger.info('permission_modify')
+                else:
+                    return update(), 422, {'Content-Type': 'application/json'}
+            except Exception as e:
+                logger.error(str(e))
+                return update(), 400, {'Content-Type': 'application/json'}
+
+        return update(), 200, {'Content-Type': 'application/json'}
+
+
+if __name__ == '__main__':
+    from yoozen_db.basic.db import (
+        user_collection, user_log_collection, permission_collection,
+        el_config_collection, el_string_collection, gui_setting_collection,
+        panel_collection
+    )
+
+    db = User(user_log_collection, permission_collection, el_config_collection, el_string_collection,
+              gui_setting_collection, user_log_collection)

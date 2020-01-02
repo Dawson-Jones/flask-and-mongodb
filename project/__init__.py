@@ -1,5 +1,4 @@
 from flask import Flask
-from pymongo import MongoClient
 from config import config_map
 from project.utils.commons import ReConverter
 
@@ -18,12 +17,15 @@ def create_app(config_name):
 
     app.url_map.converters['re'] = ReConverter
 
-    from project import panel
-    app.register_blueprint(panel.api)
+    # from project.db import panel
+    # app.register_blueprint(panel.api, url_prefix='/el_panel')
+    from project.db import admin, gui
+    app.register_blueprint(admin.app, url_prefix='/admin')
+    app.register_blueprint(gui.app, url_prefix='/gui')
 
     return app
 
 
 if __name__ == '__main__':
     appp = create_app('develop')
-    appp.run()
+    appp.run(host='0.0.0.0')

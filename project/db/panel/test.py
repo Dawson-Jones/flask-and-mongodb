@@ -1,6 +1,5 @@
-import json
 from flask import jsonify, Response
-from project.panel import api
+from project.db.panel import api
 
 
 # from yoozen_db.yc_database import YcDataBase
@@ -20,7 +19,7 @@ def jj():
 
 @api.route('/<re(r".*"):name>')
 def html(name):
-    return 'hello, {}'.format(name)
+    return 'hello, {}'.format(name), 200, {'Content-Type': 'application/json'}
 
 # @api.route('/test')
 # def test():

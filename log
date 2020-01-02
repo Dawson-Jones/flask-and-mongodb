@@ -1,0 +1,30 @@
+2020-01-02 20:14:44 - MainThread - _internal.py:122 - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-01-02 20:14:44 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-02 20:14:44 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-02 20:14:44 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-02 20:14:53 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [02/Jan/2020 20:14:53] "POST /admin/user/login HTTP/1.1" 500 -
+2020-01-02 20:15:21 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-02 20:15:21 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-02 20:15:21 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-02 20:15:21 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-02 20:15:31 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-02 20:15:32 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-02 20:15:32 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-02 20:15:32 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-02 20:15:40 - Thread-1 - db_user.py:99 - INFO - admin_login_super admin
+2020-01-02 20:15:40 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [02/Jan/2020 20:15:40] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-02 20:15:51 - Thread-1 - db_user.py:99 - INFO - admin_login_super admin
+2020-01-02 20:15:51 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [02/Jan/2020 20:15:51] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-02 20:19:21 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [02/Jan/2020 20:19:21] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-02 20:19:36 - Thread-1 - db_user.py:99 - INFO - admin_login_super admin
+2020-01-02 20:19:36 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [02/Jan/2020 20:19:36] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-02 20:20:28 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [02/Jan/2020 20:20:28] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-02 20:20:36 - Thread-1 - db_user.py:99 - INFO - admin_login_super admin
+2020-01-02 20:20:36 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [02/Jan/2020 20:20:36] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-02 20:21:07 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [02/Jan/2020 20:21:07] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-02 20:21:12 - Thread-1 - db_user.py:99 - INFO - admin_login_super admin
+2020-01-02 20:21:12 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [02/Jan/2020 20:21:12] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-02 20:24:08 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/manager.py', reloading
+2020-01-02 20:24:08 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-02 20:24:08 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-02 20:24:08 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
