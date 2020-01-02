@@ -1,0 +1,13 @@
+{
+  "el_no": "line0",
+  "cell_type": "mono",
+  "cell_amount": 120,
+  "cell_shape": "half",
+  "display_mode": 1,
+  "thresholds": {
+    "cr_size": 60,
+    "cs_width": 50,
+    "mr_tolerance": 50
+  },
+  "gui_url": "192.168.2.26:3000"
+}
