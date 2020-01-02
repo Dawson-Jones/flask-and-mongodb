@@ -1,7 +1,7 @@
 import json
 import time
-from ..utils.log_manager import logger
-from ..utils.update import update
+from yoozen_db.utils.log_manager import logger
+from yoozen_db.utils.update import update
 
 
 class Config(object):
@@ -62,6 +62,45 @@ class Config(object):
         init_config['cr']['cell_set'][0]['set'] = list_set
         init_config['cs']['cell_set'][0]['set'] = list_set
         return init_config
+
+    def el_config_display(self):
+        el_config = list(self.el_config_collection.find({}, {"_id": 0}))
+        logger.info('el_config_display')
+        return json.dumps(el_config)
+
+    def el_panel_config_check(self, info):
+        el_no = info.get('el_no')
+        if not el_no:
+            logger.error('incomplete params')
+            return 'incomplete params', 421
+
+        el_check = self.el_config_collection.find_one({'el_no': el_no}, {'_id': 0})
+        if not el_check:
+            return 'null', 400
+        logger.info('el_panel_config_check')
+        return json.dumps(el_check), 200
+
+    def el_string_config_check(self, info):
+        string_line = info.get('string_line')
+        if not string_line:
+            logger.error('incomplete params')
+            return 'incomplete params', 421
+        el_check = self.el_string_collection.find_one({'string_line': string_line}, {'_id': 0})
+        if not el_check:
+            return 'null', 400
+        logger.info('el_string_config_check')
+        return json.dumps(el_check), 200
+
+    def gui_config_check(self, info):
+        gui_no = info.get('gui_no')
+        if not gui_no:
+            logger.error('incomplete params')
+            return 'incomplete params', 421
+        gui_setting_check = self.gui_setting_collection.find_one({'gui_no': gui_no}, {'_id': 0})
+        if not gui_setting_check:
+            return 'null', 400
+        logger.info('gui_config_check')
+        return json.dumps(gui_setting_check), 200
 
     def el_panel_config_modify(self, info):  # TODO: unclear about data structure sent by front-end
         change_list = list()
@@ -269,41 +308,3 @@ class Config(object):
 
         return update(), 200
 
-    def el_config_display(self):
-        el_config = list(self.el_config_collection.find({}, {"_id": 0}))
-        logger.info('el_config_display')
-        return json.dumps(el_config)
-
-    def el_panel_config_check(self, info):
-        el_no = info.get('el_no')
-        if not el_no:
-            logger.error('incomplete params')
-            return 'incomplete params', 421
-
-        el_check = self.el_config_collection.find_one({'el_no': el_no}, {'_id': 0})
-        if not el_check:
-            return 'null', 400
-        logger.info('el_panel_config_check')
-        return json.dumps(el_check), 200
-
-    def el_string_config_check(self, info):
-        string_line = info.get('string_line')
-        if not string_line:
-            logger.error('incomplete params')
-            return 'incomplete params', 421
-        el_check = self.el_string_collection.find_one({'string_line': string_line}, {'_id': 0})
-        if not el_check:
-            return 'null', 400
-        logger.info('el_string_config_check')
-        return json.dumps(el_check), 200
-
-    def gui_config_check(self, info):
-        gui_no = info.get('gui_no')
-        if not gui_no:
-            logger.error('incomplete params')
-            return 'incomplete params', 421
-        gui_setting_check = self.gui_setting_collection.find_one({'gui_no': gui_no}, {'_id': 0})
-        if not gui_setting_check:
-            return 'null', 400
-        logger.info('gui_config_check')
-        return json.dumps(gui_setting_check), 200

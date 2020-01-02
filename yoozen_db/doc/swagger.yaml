@@ -1,0 +1,828 @@
+swagger: '2.0'
+info:
+  description: >-
+    everything about mongoDB API
+  version: 1.0.0
+  title: MongoDB API
+  termsOfService: ''
+  contact:
+    email: jeedq@qq.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 49.234.29.32  # base url
+basePath: /
+tags:
+  - name: login operator
+  - name: login admin  # 不清楚
+  #  - name: logout
+  - name: add user
+  - name: delete user
+  - name: modify user
+  - name: display all user
+  #  - name: user change password
+  - name: add panel
+    description: add panel all infomations
+    # externalDocs:
+    #   description: Find out more
+    #   url: 'http://swagger.io'
+  - name: add string
+    description: add string all infomations
+  #  - name: barcode find
+  #    description: find panel by barcode
+  #  - name: panel check last
+  #  - name: repair
+  #    description: display `mes_defect` to front-end
+  #  - name: mes defect update
+  #    description: update mes_defect field in panel table
+  #  - name: display el_panel
+  #    description: display all el_panels
+  - name: check el_panel config
+    description: query info with 'el_no' from el_panel_tabel and return
+  - name: check el_string config
+    description: query info with 'string_line' from el_string_table and return
+  - name: check gui config
+    description: query info with 'gui_no' from gui_setting_table and return
+  - name: modify el_panel config  # 不清楚
+  - name: modify el_string config
+  - name: modify el_panel threshold
+  - name: modify gui_config
+  - name: modify permission
+schemes:
+  - http
+paths:
+  /gui/user/login:
+    post:
+      tags:
+        - login operator
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/login_op'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+        "200":
+          description: success
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /admin/user/login:
+    post:
+      tags:
+        - login admin
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/login_ad'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            items:
+              $ref: '#/definitions/login_ad_out'
+        '400':
+          description: Invalid status value
+  /el_panel/send_db:
+    post:
+      tags:
+        - add panel
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/add_panel'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /add/string:
+    post:
+      tags:
+        - add string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/add_string'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /el_pabel/config/check:
+    post:
+      tags:
+        - check el_panel config
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/el_panel_config'
+      responses:
+        '200':
+          description: Pet object that needs to be added to the store
+          schema:
+            $ref: '#/definitions/el_panel_config_re'
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /el_string/config/check:
+    post:
+      tags:
+        - check el_string config
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/el_string_config'
+      responses:
+        '200':
+          description: Pet object that needs to be added to the store
+          schema:
+            $ref: '#/definitions/el_string_config_re'
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /gui/config/check:
+    post:
+      tags:
+        - check gui config
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/gui_config'
+      responses:
+        '200':
+          description: Pet object that needs to be added to the store
+          schema:
+            $ref: '#/definitions/gui_config_re'
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /admin/user/add:
+    post:
+      tags:
+        - add user
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/add_user'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+        "200":
+          description: success
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /admin/user/delete:
+    post:
+      tags:
+        - delete user
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/delete_user'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+        "200":
+          description: success
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /admin/user/modify:
+    post:
+      tags:
+        - modify user
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/modify_user'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+        "200":
+          description: success
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /admin/user/display:
+    get:
+      tags:
+        - display all user
+      produces:
+        - application/json
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/user_display'
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /admin/permission/modify:
+    post:
+      tags:
+        - modify permission
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/modify_permission'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+        '200':
+          description: success
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /el_panel/config/modify:
+    post:
+      tags:
+        - modify el_panel config
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/modify_el_panel'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+        '200':
+          description: success
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /el_string/config/modify:
+    post:
+      tags:
+        - modify el_string config
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/modify_el_string'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+        '200':
+          description: success
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /gui/config/modify:
+    post:
+      tags:
+        - modify gui_config
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/modify_gui_config'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+        '200':
+          description: success
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+  /el_panel/thresholds/modify:
+    post:
+      tags:
+        - modify el_panel threshold
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Pet object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/modify_el_panel_threshold'
+      responses:
+        '405':
+          description: Invalid input
+        '400':
+          description: incomplete params
+        '200':
+          description: success
+      security:
+        - petstore_auth:
+            - 'write:pets'
+            - 'read:pets'
+securityDefinitions:
+  petstore_auth:
+    type: oauth2
+    authorizationUrl: 'http://petstore.swagger.io/oauth/dialog'
+    flow: implicit
+    scopes:
+      'write:pets': modify pets in your account
+      'read:pets': read your pets
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  login_op:
+    type: object
+    required:
+      - user_name
+      - user_pw
+    properties:
+      user_name:
+        type: string
+        example: dobby
+      user_pw:
+        example: '9436'
+      time:
+        example: 1548056846.8
+  login_ad:
+    type: object
+    properties:
+      user_name:
+        type: string
+        example: dobby
+      user_pw:
+        example: '9436'
+      admin_url:
+        example: "192.168.2.26"
+      time:
+        example: 1548056846.8
+  login_ad_out:
+    type: object
+    properties:
+      type:
+        example: yc admin
+      permission_mng:
+        example:
+          - type: super admin
+            level_mng: 1
+            user_mng: 1
+            display_mode: 1
+            ai_module: 1
+            threshold: 1
+            el_gui: 1
+            auto_manual: 1
+            shift_mng: 1
+            pic_upload: 1
+            update_time: 0
+      line_setting:
+        example:
+          - el_no: line0
+            pre_wd_url: '192.168.2.26:8080'
+            cell_type: mono
+            cell_amount: 120
+            cell_shape: half
+            display_mode: 1
+            gui_no: 1
+            gui_url: '192.168.2.26:3000'
+            update_time: 0
+      string_setting:
+        example:
+          - string_line: string_line
+            el_url: '192.168.2.26:8080'
+            cell_type: mono
+            cell_amount: 13
+            cell_shape: half
+            update_time: 0
+      gui_setting:
+        example:
+          - gui_no: 1
+            gui_url: '192.168.2.26:3000'
+            mode: auto
+            auto_time: 5
+            manual_time: 20
+            el_limit: 3
+            update_time: 0
+      thresholds:
+        example:
+          - el_no: EL1
+            el_url: '192.168.2.26:8080'
+            cr_size: 60
+            cs_width: 50
+            mr_tolerance: 50
+            update_time: 0
+      previous_url:
+        example: 192.168.2.26
+  add_panel:
+    type: object
+    properties:
+      barcode:
+        example: '201901010000'
+      cell_type:
+        example: mono
+      cell_amount:
+        example: 120
+      cell_shape:
+        example: half
+      el_no:
+        example: line0
+      display_mode:
+        example: 1
+      module_no:
+        example: 2
+      thresholds:
+        example:
+          cr_size: 60
+          cs_width: 50
+          mr_tolerance: 50
+      create_time:
+        example: 1548056846.8
+      ai_result:
+        example: 0
+      ai_defects:
+        example:
+          cr:
+            - x: 5
+              'y': 11
+              w: 20
+              h: 20
+              c: 5 11
+      gui_result:
+        example: 0
+      gui_defects:
+        example:
+          cr:
+            - x: 5
+              'y': 11
+              w: 20
+              h: 20
+              c: 5 11
+            - x: 1
+              'y': 1
+              w: 1
+              h: 1
+              c: 1 1
+  add_string:
+    type: object
+    properties:
+      image_id:
+        example: '11111'
+      cell_type:
+        example: poly
+      cell_amount:
+        example: 13
+      cell_shape:
+        example: half
+      string_line:
+        example: line0
+      create_time:
+        example: 1548047485.24
+      result:
+        example: 0
+      defects:
+        example:
+          cr:
+            - x: 5
+              'y': 11
+              w: 20
+              h: 20
+              c: 5 11
+            - x: 1
+              'y': 1
+              w: 1
+              h: 1
+              c: 1 1
+          cs: []
+          mr: []
+          bc: []
+  el_panel_config:
+    type: object
+    properties:
+      el_no:
+        example: line0
+  el_panel_config_re:
+    type: object
+    properties:
+      el_no:
+        example: line0
+      cell_type:
+        example: mono
+      cell_amount:
+        example: 120
+      cell_shape:
+        example: half
+      display_mode:
+        example: 1
+      thresholds:
+        example:
+          cr_size: 60
+          cs_width: 50
+          mr_tolerance: 50
+      gui_url:
+        example:  '192.168.2.26:3000'
+  el_string_config:
+    type: object
+    properties:
+      string_line:
+        example: line0
+  el_string_config_re:
+    type: object
+    properties:
+      string_line:
+        example: line0
+      cell_type:
+        example: mono
+      cell_amount:
+        example: 120
+      cell_shape:
+        example: half
+  gui_config:
+    type: object
+    properties:
+      gui_no:
+        example: gui1
+  gui_config_re:
+    type: object
+    properties:
+      gui_no:
+        example: gui1
+      gui_url:
+        example: '192.168.2.26:8093'
+      mode:
+        example: auto
+      auto_time:
+        example: 5
+      manual_time:
+        example: 20
+      el_limit:
+        example: 3
+  add_user:
+    type: object
+    properties:
+      type:
+        example: operator
+      user_name:
+        example: kevin
+      user_pw:
+        example: '9436'
+      time:
+        example: 1548056846.8
+      admin_name:
+        example: root
+  delete_user:
+    type: object
+    properties:
+      user_name:
+        example: kevin
+      time:
+        example: 1548056846.8
+      admin_name:
+        example: root
+  modify_user:
+    type: object
+    properties:
+      user_name:
+        example: kevin
+      changed_items:
+        example:
+          user_name: hello_kitty
+          type: admin
+          update_time: 0
+      admin_name:
+        example: root
+      time:
+        example: 1548133162.51
+  user_display:
+    type: object
+    properties:
+      users:
+        example:
+          - user_name: kevin
+            type: operator
+            update_time: 0
+          - user_name: patrick
+            type: admin
+            update_time: 0
+  modify_el_panel:
+    type: object
+    properties:
+      admin_name:
+        example: kevin
+      time:
+        example: 1548056846.8
+      el_no:
+        example: line0
+      changed_items:
+        example:
+          cell_type: mono
+          display_mode: 2
+          update_time: 0
+  modify_el_string:
+    type: object
+    properties:
+      admin_name:
+        example: kevin
+      time:
+        example: 1548056846.8
+      el_no:
+        example: line0
+      changed_items:
+        example:
+          cell_type: mono
+          display_mode: 2
+          update_time: 0
+  modify_gui_config:
+    type: object
+    properties:
+      admin_name:
+        example: kevin
+      time:
+        example: 1548056846.8
+      gui_no:
+        example: gui1
+      changed_items:
+        example:
+          mode: auto
+          manual_time: 30
+          update_time: 0
+  modify_permission:
+    type: object
+    properties:
+      admin_name:
+        example: kevin
+      time:
+        example: 1548056846.8
+      changed_items:
+        example:
+          - type: admin
+            level_mng: 1
+            user_mng: 1
+            display_mode: 1
+            ai_module: 1
+            threshold: 1
+            el_gui: 1
+            auto_manual: 1
+            shift_mng: 1
+            pic_upload: 1
+            update_time: 0
+  modify_el_panel_threshold:
+    type: object
+    properties:
+      admin_name:
+        example: kevin
+      time:
+        example: 1548056846.8
+      changed_items:
+        example:
+          type: admin
+          level_mng: 1
+          user_mng: 1
+          display_mode: 1
+          ai_module: 1
+          threshold: 1
+          el_gui: 1
+          auto_manual: 1
+          shift_mng: 1
+          pic_upload: 1
+          update_time: 0
+
