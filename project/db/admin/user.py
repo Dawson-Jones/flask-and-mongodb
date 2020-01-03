@@ -26,7 +26,7 @@ def delete_user():
 @app.route('/user/modify', methods=['POST'])
 def modify_user():
     data = request.get_json()
-    return yc_db.user_name_modify(data)
+    return yc_db.user_modify(data)
 
 
 @app.route('/user/display', methods=['GET'])

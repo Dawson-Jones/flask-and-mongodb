@@ -274,3 +274,217 @@
 2020-01-03 16:10:43 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
 2020-01-03 16:10:43 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 16:10:43] "POST /admin/user/login HTTP/1.1" 200 -
 2020-01-03 16:10:43 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 16:10:43] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 16:26:49 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 16:26:49 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 16:26:50 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 16:26:50 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 16:26:50 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 16:26:50 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 16:26:50 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 16:26:50 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 16:30:38 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 16:30:38 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 16:30:38 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 16:30:38 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 16:30:39 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 16:30:39 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 16:30:39 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 16:30:39 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 16:32:28 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 16:32:28 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 16:32:28 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 16:32:28 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 16:32:28 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 16:32:28 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 16:32:28 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 16:32:28 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 16:37:44 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 16:37:44 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 16:37:45 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 16:37:45 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 16:51:07 - MainThread - _internal.py:122 - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-01-03 16:51:07 - MainThread - _internal.py:122 - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-01-03 16:51:07 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 16:51:07 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 16:51:07 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 16:51:07 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 16:51:07 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 16:51:07 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 16:51:16 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 16:51:16] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 16:51:16 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 16:51:16] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 16:51:30 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 16:51:30 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 16:51:30 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 16:51:30] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 16:51:30 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 16:51:30] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:11:42 - MainThread - _internal.py:122 - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-01-03 17:11:42 - MainThread - _internal.py:122 - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-01-03 17:11:42 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:11:42 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:11:42 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:11:42 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:11:42 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:11:42 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:11:48 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:11:48] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:11:48 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:11:48] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:11:57 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:11:57] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:11:57 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:11:57] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:12:07 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:12:07 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:12:07 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:12:07] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:12:07 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:12:07] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:12:21 - Thread-1 - db_user.py:240 - INFO - user_modify_test2
+2020-01-03 17:12:21 - Thread-1 - db_user.py:240 - INFO - user_modify_test2
+2020-01-03 17:12:21 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:12:21] "POST /admin/user/modify HTTP/1.1" 200 -
+2020-01-03 17:12:21 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:12:21] "POST /admin/user/modify HTTP/1.1" 200 -
+2020-01-03 17:20:56 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:20:56] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:20:56 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:20:56] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:21:08 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:21:08 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:21:08 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:21:08] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:21:08 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:21:08] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:25:32 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:25:32 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:25:33 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:25:33 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:25:33 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:25:33 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:25:33 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:25:33 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:26:17 - Thread-1 - db_user.py:224 - INFO - user_modify_test2
+2020-01-03 17:26:17 - Thread-1 - db_user.py:224 - INFO - user_modify_test2
+2020-01-03 17:26:17 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:26:17] "POST /admin/user/modify HTTP/1.1" 200 -
+2020-01-03 17:26:17 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:26:17] "POST /admin/user/modify HTTP/1.1" 200 -
+2020-01-03 17:26:34 - Thread-1 - db_user.py:224 - INFO - user_modify_test2
+2020-01-03 17:26:34 - Thread-1 - db_user.py:224 - INFO - user_modify_test2
+2020-01-03 17:26:34 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:26:34] "POST /admin/user/modify HTTP/1.1" 200 -
+2020-01-03 17:26:34 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:26:34] "POST /admin/user/modify HTTP/1.1" 200 -
+2020-01-03 17:26:45 - Thread-1 - db_user.py:224 - INFO - user_modify_test2
+2020-01-03 17:26:45 - Thread-1 - db_user.py:224 - INFO - user_modify_test2
+2020-01-03 17:26:45 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:26:45] "POST /admin/user/modify HTTP/1.1" 200 -
+2020-01-03 17:26:45 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:26:45] "POST /admin/user/modify HTTP/1.1" 200 -
+2020-01-03 17:26:58 - Thread-1 - db_user.py:164 - ERROR - permission denied super admin
+2020-01-03 17:26:58 - Thread-1 - db_user.py:164 - ERROR - permission denied super admin
+2020-01-03 17:26:58 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:26:58] "POST /admin/user/delete HTTP/1.1" 423 -
+2020-01-03 17:26:58 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:26:58] "POST /admin/user/delete HTTP/1.1" 423 -
+2020-01-03 17:27:55 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:27:55 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:27:55 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:27:55 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:27:56 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:27:56 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:27:56 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:27:56 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:28:17 - Thread-1 - db_user.py:164 - ERROR - permission denied super admin
+2020-01-03 17:28:17 - Thread-1 - db_user.py:164 - ERROR - permission denied super admin
+2020-01-03 17:28:17 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:28:17] "POST /admin/user/delete HTTP/1.1" 423 -
+2020-01-03 17:28:17 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:28:17] "POST /admin/user/delete HTTP/1.1" 423 -
+2020-01-03 17:30:17 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:30:17 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:30:17 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:30:17 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:30:17 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:30:17 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:30:17 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:30:17 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:36:04 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:36:04 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:36:05 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:36:05 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:36:05 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:36:05 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:36:05 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:36:05 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:36:18 - Thread-1 - db_user.py:164 - ERROR - permission denied super admin
+2020-01-03 17:36:18 - Thread-1 - db_user.py:164 - ERROR - permission denied super admin
+2020-01-03 17:36:18 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:36:18] "POST /admin/user/delete HTTP/1.1" 423 -
+2020-01-03 17:36:18 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:36:18] "POST /admin/user/delete HTTP/1.1" 423 -
+2020-01-03 17:37:28 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:37:28] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:37:28 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:37:28] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:37:49 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:37:49] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:37:49 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:37:49] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:38:18 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:38:18 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:38:18 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:38:18] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:38:18 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:38:18] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:38:37 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:38:37] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:38:37 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:38:37] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:38:45 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:38:45 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:38:45 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:38:45] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:38:45 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:38:45] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:39:30 - Thread-1 - _internal.py:122 - INFO - 127.0.0.1 - - [03/Jan/2020 17:39:30] "POST /admin/user/delete HTTP/1.1" 500 -
+2020-01-03 17:39:30 - Thread-1 - _internal.py:122 - INFO - 127.0.0.1 - - [03/Jan/2020 17:39:30] "POST /admin/user/delete HTTP/1.1" 500 -
+2020-01-03 17:41:45 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:41:45] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:41:45 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:41:45] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:41:52 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:41:52 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:41:52 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:41:52] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:41:52 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:41:52] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:42:12 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:42:12] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:42:12 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:42:12] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:42:23 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:42:23 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:42:23 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:42:23] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:42:23 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:42:23] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:42:34 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:42:34] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:42:34 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:42:34] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:42:48 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:42:48] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:42:48 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:42:48] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:42:58 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:42:58 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:42:58 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:42:58] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:42:58 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:42:58] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:43:19 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:43:19] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:43:19 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:43:19] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:43:48 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:43:48] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:43:48 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:43:48] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:43:51 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:43:51 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:43:51 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:43:51 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:43:52 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:43:52 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:43:52 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:43:52 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:43:58 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:43:58 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:43:58 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:43:58 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:43:58 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:43:58 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:43:58 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:43:58 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:44:23 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:44:23] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:44:23 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:44:23] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:44:34 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:44:34] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:44:34 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:44:34] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:44:58 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:44:58] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:44:58 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:44:58] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:45:10 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:45:10 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:45:10 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:45:10] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:45:10 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:45:10] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:45:21 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:45:21] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:45:21 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:45:21] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:45:52 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:45:52 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 17:45:53 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:45:53 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 17:45:53 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:45:53 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 17:45:53 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:45:53 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 17:46:03 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:46:03 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:46:03 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:46:03] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:46:03 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:46:03] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:46:11 - Thread-1 - db_user.py:180 - INFO - user_del_test1
+2020-01-03 17:46:11 - Thread-1 - db_user.py:180 - INFO - user_del_test1
+2020-01-03 17:46:12 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:46:12] "POST /admin/user/delete HTTP/1.1" 200 -
+2020-01-03 17:46:12 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:46:12] "POST /admin/user/delete HTTP/1.1" 200 -
+2020-01-03 17:46:59 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:46:59] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:46:59 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:46:59] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-03 17:47:10 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:47:10 - Thread-1 - db_user.py:95 - INFO - admin_login_super admin
+2020-01-03 17:47:10 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:47:10] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-03 17:47:10 - Thread-1 - _internal.py:122 - INFO - 192.168.2.54 - - [03/Jan/2020 17:47:10] "POST /admin/user/login HTTP/1.1" 200 -

@@ -28,7 +28,7 @@ class User(object):
         res = dict()
         res['users'] = list(
             self.user_collection.find({'type': {'$ne': 'yc_admin'}, 'activate': 1},
-                                      {'_id': 0, "user_pw": 0, "activate": 0, 'update_time': 0}))
+                                      {'_id': 0, "user_pw": 0, "activate": 0}))
         return json.dumps(res), 200, {'Content-Type': 'application/json'}
 
     def user_login_operator(self, info: dict):
@@ -156,7 +156,7 @@ class User(object):
         if not all([user_name, admin_name, info_time]):
             logger.error('incomplete params')
             return update(), 400, {'Content-Type': 'application/json'}
-        admin_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
+        admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
         if not admin_check:
             logger.error("admin user:%s didn't exist" % admin_name)
             return "admin user didn't exist", 400, {'Content-Type': 'application/json'}
@@ -180,32 +180,32 @@ class User(object):
         logger.info("user_del_%s" % (info["user_name"]))
         return update(), 200, {'Content-Type': 'application/json'}
 
-    def user_name_modify(self, info: dict):
+    def user_modify(self, info: dict):
         t = time.time()
-        change_list = list()
         admin_name = info.get('admin_name')
         user_name = info.get('user_name')
-        changed_items = info.get('changed_items')
+        changed_items: dict = info.get('changed_items')
         info_time = info.get('time')
         cg_user_name = changed_items.get('user_name')
         cg_update_time = changed_items.get('update_time')
-        if not all([admin_name, user_name, changed_items, info_time, cg_user_name, cg_update_time]):
+        if not all([admin_name, user_name, changed_items, info_time, cg_update_time]):
             logger.error('incomplete params')
             return update(), 400, {'Content-Type': 'application/json'}
         admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
         if not admin_check:
             logger.error("user:%s didn't exist" % admin_name)
             return update(), 422, {'Content-Type': 'application/json'}
-        if admin_check['type'] != 'super_admin' and admin_check['type'] == 'yc_admin':
+        if admin_check['type'] != 'super_admin' and admin_check['type'] != 'yc_admin':
             logger.error("permission denied %s" % (info["admin_name"]))
             return update(), 423, {'Content-Type': 'application/json'}
         user_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
         if not user_check:
             logger.error("user:%s didn't exist" % user_name)
             return update(), 422, {'Content-Type': 'application/json'}
-        dup = self.user_collection.find_one({'user_name': cg_user_name, 'activate': 1})
-        if dup:
+        if cg_user_name and self.user_collection.find_one({'user_name': cg_user_name, 'activate': 1}):
+            # if change name have be used
             return update(), 412, {'Content-Type': 'application/json'}
+        change_list = list()
         if user_check['update_time'] == cg_update_time:
             for key, value in changed_items.items():
                 user_check[key] = value
