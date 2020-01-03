@@ -83,7 +83,8 @@ def gen_csv():
 
 
 @api.route('/add_panel_test')
-def add_panel():
+def add_panell():
+    # 函数不能重名
     data_list = list()
     for i in range(10):
         panel_data = {
