@@ -112,10 +112,10 @@ class User(object):
             }
             self.user_log_collection.insert_one(context)
             logger.info("logout_%s" % user_name)
-            return '1', 200
+            return '1', 200, {'Content-Type': 'application/json'}
         else:
             logger.error("user:%s didn't exist" % user_name)
-            return "user didn't exist", 400
+            return "user didn't exist", 400, {'Content-Type': 'application/json'}
 
     def user_add(self, info: dict):
         t = time.time()
@@ -127,7 +127,7 @@ class User(object):
         if not all([user_name, user_pw, admin_name, user_type, info_time]):
             logger.error('incomplete params')
             return update(), 400, {'Content-Type': 'application/json'}
-        admin_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
+        admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
         if not admin_check:
             logger.error("admin user:%s didn't exist" % admin_name)
             return "admin user didn't exist", 400, {'Content-Type': 'application/json'}
@@ -180,7 +180,7 @@ class User(object):
         logger.info("user_del_%s" % (info["user_name"]))
         return update(), 200, {'Content-Type': 'application/json'}
 
-    def user_modify(self, info: dict):
+    def user_name_modify(self, info: dict):
         t = time.time()
         change_list = list()
         admin_name = info.get('admin_name')
@@ -235,11 +235,11 @@ class User(object):
         cg_update_time = changed_items.get('update_time')
         if not all([admin_name, user_name, changed_items, info_time, user_pw, cg_update_time]):
             logger.error('incomplete params')
-            return update(), 400
+            return update(), 400, {'Content-Type': 'application/json'}
         admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
         user_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
         if not (admin_check and user_check):
-            return update(), 422
+            return update(), 422, {'Content-Type': 'application/json'}
         if user_check['update_time'] == cg_update_time:
             user_check['user_pw'] = user_pw
             self.user_collection.replace_one({'user_name': user_name, 'activate': 1}, user_check)
@@ -250,11 +250,11 @@ class User(object):
                 'action': "%s_password_change{%s}" % (admin_name, user_name)
             })
             logger.info("password_change{%s}" % user_name)
-            return '1', 200
+            return '1', 200, {'Content-Type': 'application/json'}
         else:
-            return update(), 422
+            return update(), 422, {'Content-Type': 'application/json'}
 
-    def permission_modify(self, info):
+    def permission_modify(self, info):  # TODO: oxxx
         t = time.time()
         # change_list = list()
         admin_name = info.get('admin_name')
