@@ -10,7 +10,7 @@ collection = db['jdq_tb']
 # res = collection.find()
 # print(res[0])
 
-name = ['chen', 'zy', 'gg', 'hb', 'ql', 'xy', 'dq']
+name = ['chen', 'gg', 'zy', 'hb', 'ql', 'xy', 'dq']
 
 dd = [{'name': i} for i in name]
 

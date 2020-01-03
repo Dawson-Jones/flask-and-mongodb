@@ -7,11 +7,6 @@ from project.db.panel import api
 # yc_db = YcDataBase()
 
 
-@api.route('/')
-def index():
-    return jsonify(1)
-
-
 @api.route('/jj')
 def jj():
     return Response('1', content_type='application/json')
@@ -21,9 +16,12 @@ def jj():
 def html(name):
     return 'hello, {}'.format(name), 200, {'Content-Type': 'application/json'}
 
-# @api.route('/test')
-# def test():
-#     return yc_db.user_display()
+
+@api.route('/barcode/find/<int:barcode>')
+def barcode_find(barcode):
+    result = panel_collection.find_one({"barcode": barcode}, {"_id": 0})
+    return jsonify(result)
+
 
 # @api.route('/agg')
 # def agg():
