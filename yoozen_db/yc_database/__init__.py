@@ -24,7 +24,6 @@ class YcDataBase(Config, Product, User):
     def __init__(self):
         if self.init_flag:
             return
-        url = dict()
         super().__init__(
             el_config_collection,
             user_collection,
@@ -32,7 +31,8 @@ class YcDataBase(Config, Product, User):
             user_log_collection,
             el_string_collection,
             permission_collection,
-            panel_collection)
+            panel_collection
+        )
         self.init_flag = True
 
 
