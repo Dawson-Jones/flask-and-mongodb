@@ -84,3 +84,15 @@
 2020-01-03 11:20:35 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
 2020-01-03 11:20:35 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
 2020-01-03 11:20:35 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 11:27:10 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/__init__.py', reloading
+2020-01-03 11:27:10 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 11:27:10 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 11:27:10 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 11:38:46 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 11:38:46 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 11:38:46 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 11:38:46 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-03 11:42:12 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_user.py', reloading
+2020-01-03 11:42:12 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-03 11:42:13 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-03 11:42:13 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671

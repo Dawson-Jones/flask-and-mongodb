@@ -22,10 +22,6 @@ class User(object):
         self.el_string_collection = el_string_collection
         self.gui_setting_collection = gui_setting_collection
         self.user_log_collection = user_log_collection
-        # with open('../SETUP/url.csv', 'r', newline='') as f:
-        #     reader = csv.DictReader(f)
-        #     for csv_url in reader:
-        #         self.url = csv_url
 
     @property
     def user_display(self):
@@ -59,10 +55,10 @@ class User(object):
             return 'login failed', 421
 
     def user_login_admin(self, info: dict):
-        with open('yoozen_db/SETUP/url.csv', 'r', newline='') as f:
-            reader = csv.DictReader(f)
-            for csv_url in reader:
-                url = csv_url
+        # with open('yoozen_db/SETUP/url.csv', 'r', newline='') as f:
+        #     reader = csv.DictReader(f)
+        #     for csv_url in reader:
+        #         url = csv_url
         res = dict()
         user_name = info.get('user_name')
         user_pw = info.get('user_pw')
@@ -87,11 +83,11 @@ class User(object):
         })
 
         res['type'] = user_check['type']
-        pre_url = url.get(admin_url)
-        res['previous_url'] = user_check.get("previous_url") if user_check.get('previous_url') != pre_url else ''
+        # pre_url = url.get(admin_url)
+        # res['previous_url'] = user_check.get("previous_url") if user_check.get('previous_url') != pre_url else ''
+        # user_check['previous_url'] = pre_url
+        # self.user_collection.replace_one({'user_name': user_name, 'activate': 1}, user_check)
 
-        user_check['previous_url'] = pre_url
-        self.user_collection.replace_one({'user_name': user_name, 'activate': 1}, user_check)
         res['permission_mng'] = list(self.permission_collection.find({}, {'_id': 0}))
         res['line_setting'] = list(self.el_config_collection.find({}, {'_id': 0}))
         res['string_setting'] = list(self.el_string_collection.find({}, {'_id': 0}))
@@ -297,14 +293,3 @@ class User(object):
                 return update(), 400, {'Content-Type': 'application/json'}
 
         return update(), 200, {'Content-Type': 'application/json'}
-
-
-if __name__ == '__main__':
-    from yoozen_db.basic.db import (
-        user_collection, user_log_collection, permission_collection,
-        el_config_collection, el_string_collection, gui_setting_collection,
-        panel_collection
-    )
-
-    db = User(user_log_collection, permission_collection, el_config_collection, el_string_collection,
-              gui_setting_collection, user_log_collection)

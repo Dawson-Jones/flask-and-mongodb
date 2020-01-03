@@ -66,30 +66,30 @@ class Config(object):
     def el_config_display(self):
         el_config = list(self.el_config_collection.find({}, {"_id": 0}))
         logger.info('el_config_display')
-        return json.dumps(el_config)
+        return json.dumps(el_config), 200 , {'Content-Type': 'application/json'}
 
     def el_panel_config_check(self, info: dict):
         el_no = info.get('el_no')
         if not el_no:
             logger.error('incomplete params')
-            return 'incomplete params', 421
+            return 'incomplete params', 421, {'Content-Type': 'application/json'}
 
         el_check = self.el_config_collection.find_one({'el_no': el_no}, {'_id': 0})
         if not el_check:
-            return 'null', 400
+            return 'null', 400, {'Content-Type': 'application/json'}
         logger.info('el_panel_config_check')
-        return json.dumps(el_check), 200
+        return json.dumps(el_check), 200, {'Content-Type': 'application/json'}
 
     def el_string_config_check(self, info: dict):
         string_line = info.get('string_line')
         if not string_line:
             logger.error('incomplete params')
-            return 'incomplete params', 421
+            return 'incomplete params', 421, {'Content-Type': 'application/json'}
         el_check = self.el_string_collection.find_one({'string_line': string_line}, {'_id': 0})
         if not el_check:
-            return 'null', 400
+            return 'null', 400, {'Content-Type': 'application/json'}
         logger.info('el_string_config_check')
-        return json.dumps(el_check), 200
+        return json.dumps(el_check), 200, {'Content-Type': 'application/json'}
 
     def gui_config_check(self, info: dict):
         gui_no = info.get('gui_no')
@@ -102,7 +102,19 @@ class Config(object):
         logger.info('gui_config_check')
         return json.dumps(gui_setting_check), 200, {'Content-Type': 'application/json'}
 
-    def el_panel_config_modify(self, info: dict):  # TODO: unclear about data structure sent by front-end
+    def el_panel_config_modify(self, info: dict):
+        """
+        {
+          "admin_name": "dawson",
+          "time": 1548056846.8,
+          "el_no": "line0",
+          "changed_items": {
+            "cell_type": "mono",
+            "display_mode": 2,
+            "update_time": 0
+          }
+        }
+        """
         change_list = list()
         t = time.time()
         el_no = info.get('el_no')
@@ -111,21 +123,21 @@ class Config(object):
 
         if not all([el_no, admin_name, changed_items]):
             logger.error('incomplete params')
-            return update(), 400
+            return update(), 400, {'Content-Type': 'application/json'}
 
         el_check = self.el_config_collection.find_one({"el_no": el_no})
         el_check2 = self.el_config_collection.find_one({"el_no": el_no})
         admin_check = self.user_collection.find_one({"user_name": admin_name, "activate": 1})
 
-        if el_check and el_check.get("update_time") == changed_items.get("update_time"):
+        if el_check and el_check.get("update_time") == changed_items.get("update_time"):  # TODO: update_time 有什么用
             limit = list(self.el_config_collection.aggregate([
                 {'$match': {'gui_no': changed_items.get("gui_no")}},
                 {"$group": {'_id': {'_id': '$gui_no'}, 'limit': {"$sum": 1}}}
             ]))
-            gui_limit = self.gui_setting_collection.find_one({"gui_no": changed_items.get("gui_no")})
+            gui_limit = self.gui_setting_collection.find_one({"gui_no": changed_items.get("gui_no")})  # TODO: 里面没有gui_no
 
             if limit[0]['limit'] + 1 > gui_limit['el_limit']:
-                return update(), 412
+                return update(), 412, {'Content-Type': 'application/json'}
 
             for key, value in changed_items.items():
                 el_check[key] = value
@@ -145,9 +157,9 @@ class Config(object):
                 'action': "%s_change_el_config:%s_%s" % (info["admin_name"], info["el_no"], changes)
             })
             logger.info('el_config_modify')
-            return update(), 200
+            return update(), 200, {'Content-Type': 'application/json'}
         else:
-            return update(), 422
+            return update(), 422, {'Content-Type': 'application/json'}
 
     def el_string_config_modify(self, info: dict):
         t = time.time()
@@ -158,7 +170,7 @@ class Config(object):
         changed_items = info.get('changed_items')
         if not all([string_line, admin_name, changed_items, info_time]):
             logger.error('incomplete params')
-            return update(), 400
+            return update(), 400, {'Content-Type': 'application/json'}
         el_check = self.el_string_collection.find_one({'string_line': string_line})
         admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
         if el_check and admin_check:
@@ -179,12 +191,12 @@ class Config(object):
                 }
                 self.user_log_collection.insert_one(context)
                 logger.info('el_string_modify')
-                return update(), 200
+                return update(), 200, {'Content-Type': 'application/json'}
             else:
-                return update(), 422
+                return update(), 422, {'Content-Type': 'application/json'}
         else:
             logger.error("el_no:%s didn't exist" % (info["admin_name"]))
-            return update(), 422
+            return update(), 422, {'Content-Type': 'application/json'}
 
     def el_panel_thresholds_modify(self, info: dict):
         t = time.time()
@@ -195,7 +207,7 @@ class Config(object):
         info_time = info.get('time')
         if not all([el_no, admin_name, changed_items, info_time]):
             logger.error('incomplete params')
-            return update(), 400
+            return update(), 400, {'Content-Type': 'application/json'}
         el_check = self.el_config_collection.find_one({'el_no': el_no})
         admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
         if el_check:
@@ -216,13 +228,13 @@ class Config(object):
                         'action': "%s_change_el_config:%s_%s" % (admin_name, el_no, changes)
                     })
                     logger.info('thresholds_modify')
-                    return update(), 200
+                    return update(), 200, {'Content-Type': 'application/json'}
             except Exception as e:
                 logger.error(str(e))
-                return update(), 422
+                return update(), 422, {'Content-Type': 'application/json'}
         else:
             logger.error("el_no:%s didn't exist" % admin_name)
-            return update(), 422
+            return update(), 422, {'Content-Type': 'application/json'}
 
     def gui_config_modify(self, info: dict):
         t = time.time()
@@ -233,7 +245,7 @@ class Config(object):
         info_time = info.get('time')
         if not all([gui_no, admin_name, changed_items, info_time]):
             logger.error('incomplete params')
-            return update(), 400
+            return update(), 400, {'Content-Type': 'application/json'}
         gui_check = self.gui_setting_collection.find_one({'gui_no': gui_no})
         admin_check = self.user_collection.find_one({"user_name": info["admin_name"], "activate": 1})
         if gui_check:
@@ -244,7 +256,7 @@ class Config(object):
                         {'$group': {'_id': '$gui_no', 'limit': {'$sum': 1}}}
                     ]))
                     if limit[0]['limit'] > int(changed_items['el_limit']):
-                        return update(), 412
+                        return update(), 412, {'Content-Type': 'application/json'}
                     for key, value in changed_items.items():
                         gui_check[key] = value
                         change_list.append(key)
@@ -260,11 +272,11 @@ class Config(object):
                         'action': "%s_change_gui_config:%s_%s" % (admin_name, gui_no, changes)
                     })
                     logger.info('gui_config_modify')
-                    return update(), 200
+                    return update(), 200, {'Content-Type': 'application/json'}
             except Exception as e:
                 logger.error(str(e))
-                return update(), 400
+                return update(), 400, {'Content-Type': 'application/json'}
         else:
             logger.error("gui_no:%s didn't exist" % (info["admin_name"]))
-            return update(), 422
+            return update(), 422, {'Content-Type': 'application/json'}
 
