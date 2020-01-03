@@ -11,9 +11,6 @@ from yoozen_db.yc_database import YcDataBase
 yc_db = YcDataBase()
 
 
-# collection = db['panel']
-
-
 @api.route('/gen_csv')
 def gen_csv():
     # http://host:port/gen_csv?hours=5
@@ -95,9 +92,9 @@ def add_panell():
             "origin_defects": {},
             "cell_shape": "half",
             "status": {
-                "EL_AI": "OK" if random.randint(0, 1) else "NG",
-                "EL_OP": "OK" if random.randint(0, 1) else "NG",
-                "AP_OP": "OK" if random.randint(0, 1) else "NG"
+                "EL_AI": ["OK", "NG"][random.randint(0, 1)],
+                "EL_OP": ["OK", "NG"][random.randint(0, 1)],
+                "AP_OP": ["OK", "NG"][random.randint(0, 1)]
             },
             "el_no": "1",
             "ap_defects": {},
