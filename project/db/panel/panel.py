@@ -23,7 +23,6 @@ def check_panel_config():
     return yc_db.el_panel_config_check(data)
 
 
-
 @api.route('/el_panel/config/modify', methods=['POST'])
 def modify_panel_config():
     data = request.get_json()
