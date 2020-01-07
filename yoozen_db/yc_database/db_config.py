@@ -66,7 +66,7 @@ class Config(object):
     def el_config_display(self):
         el_config = list(self.el_config_collection.find({}, {"_id": 0}))
         logger.info('el_config_display')
-        return json.dumps(el_config), 200 , {'Content-Type': 'application/json'}
+        return json.dumps(el_config), 200, {'Content-Type': 'application/json'}
 
     def el_panel_config_check(self, info: dict):
         el_no = info.get('el_no')
@@ -134,7 +134,8 @@ class Config(object):
                 {'$match': {'gui_no': changed_items.get("gui_no")}},
                 {"$group": {'_id': {'_id': '$gui_no'}, 'limit': {"$sum": 1}}}
             ]))
-            gui_limit = self.gui_setting_collection.find_one({"gui_no": changed_items.get("gui_no")})  # TODO: 里面没有gui_no
+            gui_limit = self.gui_setting_collection.find_one(
+                {"gui_no": changed_items.get("gui_no")})  # TODO: 里面没有gui_no
 
             if limit[0]['limit'] + 1 > gui_limit['el_limit']:
                 return update(), 412, {'Content-Type': 'application/json'}
@@ -279,4 +280,3 @@ class Config(object):
         else:
             logger.error("gui_no:%s didn't exist" % (info["admin_name"]))
             return update(), 422, {'Content-Type': 'application/json'}
-
