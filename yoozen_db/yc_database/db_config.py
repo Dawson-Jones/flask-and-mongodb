@@ -129,15 +129,15 @@ class Config(object):
         el_check2 = self.el_config_collection.find_one({"el_no": el_no})
         admin_check = self.user_collection.find_one({"user_name": admin_name, "activate": 1})
 
-        if el_check and el_check.get("update_time") == changed_items.get("update_time"):  # TODO: update_time 有什么用
+        if el_check and el_check.get("update_time") == changed_items.get("update_time"):
             limit = list(self.el_config_collection.aggregate([
                 {'$match': {'gui_no': changed_items.get("gui_no")}},
-                {"$group": {'_id': {'_id': '$gui_no'}, 'limit': {"$sum": 1}}}
+                {"$group": {'_id': '$gui_no', 'limit': {"$sum": 1}}}
             ]))
-            gui_limit = self.gui_setting_collection.find_one(
-                {"gui_no": changed_items.get("gui_no")})  # TODO: 里面没有gui_no
+            print(limit)  # [{'_id': {'_id': 'op0'}, 'limit': 2}]
+            gui_limit = self.gui_setting_collection.find_one({"gui_no": changed_items.get("gui_no")})
 
-            if limit[0]['limit'] + 1 > gui_limit['el_limit']:
+            if limit and limit[0]['limit'] >= gui_limit['el_limit']:
                 return update(), 412, {'Content-Type': 'application/json'}
 
             for key, value in changed_items.items():

@@ -49,3 +49,147 @@
 2020-01-07 17:27:35 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
 2020-01-07 17:27:36 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
 2020-01-07 17:27:36 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 17:27:54 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:27:54] "POST /gui/config/check HTTP/1.1" 400 -
+2020-01-07 17:28:08 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:28:08] "POST /gui/config/check HTTP/1.1" 400 -
+2020-01-07 17:28:20 - Thread-1 - db_config.py:80 - INFO - el_panel_config_check
+2020-01-07 17:28:20 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 17:28:20] "POST /el_panel/config/check HTTP/1.1" 200 -
+2020-01-07 17:30:34 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:30:34] "POST /gui/config/check HTTP/1.1" 400 -
+2020-01-07 17:32:46 - Thread-1 - db_config.py:102 - INFO - gui_config_check
+2020-01-07 17:32:46 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:32:46] "POST /gui/config/check HTTP/1.1" 200 -
+2020-01-07 17:32:56 - Thread-1 - db_user.py:94 - INFO - admin_login_super admin
+2020-01-07 17:32:56 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:32:56] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-07 17:33:46 - Thread-1 - db_config.py:248 - ERROR - incomplete params
+2020-01-07 17:33:46 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:33:46] "POST /gui/config/modify HTTP/1.1" 400 -
+2020-01-07 17:34:38 - Thread-1 - db_config.py:102 - INFO - gui_config_check
+2020-01-07 17:34:38 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:34:38] "POST /gui/config/check HTTP/1.1" 200 -
+2020-01-07 17:36:02 - Thread-1 - db_config.py:248 - ERROR - incomplete params
+2020-01-07 17:36:02 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:36:02] "POST /gui/config/modify HTTP/1.1" 400 -
+2020-01-07 17:36:55 - Thread-1 - db_config.py:275 - INFO - gui_config_modify
+2020-01-07 17:36:55 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:36:55] "POST /gui/config/modify HTTP/1.1" 200 -
+2020-01-07 17:40:18 - Thread-1 - db_config.py:248 - ERROR - incomplete params
+2020-01-07 17:40:18 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:40:18] "POST /gui/config/modify HTTP/1.1" 400 -
+2020-01-07 17:40:42 - Thread-1 - db_config.py:248 - ERROR - incomplete params
+2020-01-07 17:40:42 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:40:42] "POST /gui/config/modify HTTP/1.1" 400 -
+2020-01-07 17:41:10 - Thread-1 - db_config.py:275 - INFO - gui_config_modify
+2020-01-07 17:41:10 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:41:10] "POST /gui/config/modify HTTP/1.1" 200 -
+2020-01-07 17:43:05 - Thread-1 - db_config.py:102 - INFO - gui_config_check
+2020-01-07 17:43:05 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:43:05] "POST /gui/config/check HTTP/1.1" 200 -
+2020-01-07 17:43:20 - Thread-1 - db_config.py:248 - ERROR - incomplete params
+2020-01-07 17:43:20 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:43:20] "POST /gui/config/modify HTTP/1.1" 400 -
+2020-01-07 17:43:43 - Thread-1 - db_config.py:275 - INFO - gui_config_modify
+2020-01-07 17:43:43 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:43:43] "POST /gui/config/modify HTTP/1.1" 200 -
+2020-01-07 17:44:38 - Thread-1 - db_config.py:248 - ERROR - incomplete params
+2020-01-07 17:44:38 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:44:38] "POST /gui/config/modify HTTP/1.1" 400 -
+2020-01-07 17:44:55 - Thread-1 - db_config.py:275 - INFO - gui_config_modify
+2020-01-07 17:44:55 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:44:55] "POST /gui/config/modify HTTP/1.1" 200 -
+2020-01-07 17:47:47 - Thread-1 - db_config.py:248 - ERROR - incomplete params
+2020-01-07 17:47:47 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:47:47] "POST /gui/config/modify HTTP/1.1" 400 -
+2020-01-07 17:48:01 - Thread-1 - db_config.py:275 - INFO - gui_config_modify
+2020-01-07 17:48:01 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:48:01] "POST /gui/config/modify HTTP/1.1" 200 -
+2020-01-07 17:48:50 - Thread-1 - db_config.py:275 - INFO - gui_config_modify
+2020-01-07 17:48:50 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:48:50] "POST /gui/config/modify HTTP/1.1" 200 -
+2020-01-07 17:49:05 - Thread-1 - db_config.py:248 - ERROR - incomplete params
+2020-01-07 17:49:05 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:49:05] "POST /gui/config/modify HTTP/1.1" 400 -
+2020-01-07 17:50:28 - Thread-1 - db_config.py:275 - INFO - gui_config_modify
+2020-01-07 17:50:28 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 17:50:28] "POST /gui/config/modify HTTP/1.1" 200 -
+2020-01-07 17:52:03 - Thread-1 - db_config.py:160 - INFO - el_config_modify
+2020-01-07 17:52:03 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 17:52:03] "POST /el_panel/config/modify HTTP/1.1" 200 -
+2020-01-07 17:52:39 - Thread-1 - db_config.py:160 - INFO - el_config_modify
+2020-01-07 17:52:39 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 17:52:39] "POST /el_panel/config/modify HTTP/1.1" 200 -
+2020-01-07 17:54:01 - Thread-1 - db_config.py:160 - INFO - el_config_modify
+2020-01-07 17:54:01 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 17:54:01] "POST /el_panel/config/modify HTTP/1.1" 200 -
+2020-01-07 17:57:31 - Thread-1 - db_config.py:160 - INFO - el_config_modify
+2020-01-07 17:57:31 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 17:57:31] "POST /el_panel/config/modify HTTP/1.1" 200 -
+2020-01-07 17:59:05 - Thread-1 - db_config.py:160 - INFO - el_config_modify
+2020-01-07 17:59:05 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 17:59:05] "POST /el_panel/config/modify HTTP/1.1" 200 -
+2020-01-07 18:01:52 - Thread-1 - db_config.py:231 - INFO - thresholds_modify
+2020-01-07 18:01:52 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 18:01:52] "POST /el_panel/thresholds/modify HTTP/1.1" 200 -
+2020-01-07 18:02:17 - Thread-1 - db_config.py:231 - INFO - thresholds_modify
+2020-01-07 18:02:17 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 18:02:17] "POST /el_panel/thresholds/modify HTTP/1.1" 200 -
+2020-01-07 18:56:04 - Thread-1 - db_config.py:160 - INFO - el_config_modify
+2020-01-07 18:56:04 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 18:56:04] "POST /el_panel/config/modify HTTP/1.1" 200 -
+2020-01-07 18:58:39 - Thread-1 - db_config.py:160 - INFO - el_config_modify
+2020-01-07 18:58:39 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 18:58:39] "POST /el_panel/config/modify HTTP/1.1" 200 -
+2020-01-07 19:03:11 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 19:03:11] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-07 19:03:16 - Thread-1 - db_user.py:94 - INFO - admin_login_super admin
+2020-01-07 19:03:16 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 19:03:16] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-07 19:03:50 - Thread-1 - db_config.py:231 - INFO - thresholds_modify
+2020-01-07 19:03:50 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:03:50] "POST /el_panel/thresholds/modify HTTP/1.1" 200 -
+2020-01-07 19:05:26 - Thread-1 - db_config.py:231 - INFO - thresholds_modify
+2020-01-07 19:05:26 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:05:26] "POST /el_panel/thresholds/modify HTTP/1.1" 200 -
+2020-01-07 19:05:51 - Thread-1 - db_config.py:231 - INFO - thresholds_modify
+2020-01-07 19:05:52 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:05:52] "POST /el_panel/thresholds/modify HTTP/1.1" 200 -
+2020-01-07 19:14:56 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 19:14:56] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-07 19:15:01 - Thread-1 - db_user.py:94 - INFO - admin_login_super admin
+2020-01-07 19:15:01 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 19:15:01] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-07 19:16:57 - Thread-1 - db_config.py:231 - INFO - thresholds_modify
+2020-01-07 19:16:58 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:16:58] "POST /el_panel/thresholds/modify HTTP/1.1" 200 -
+2020-01-07 19:20:16 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 19:20:16] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-07 19:21:12 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 19:21:12] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-07 19:21:18 - Thread-1 - db_user.py:94 - INFO - admin_login_super admin
+2020-01-07 19:21:18 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 19:21:18] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-07 19:21:43 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 19:21:43] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-07 19:21:50 - Thread-1 - db_user.py:94 - INFO - admin_login_super admin
+2020-01-07 19:21:50 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 19:21:50] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-07 19:22:28 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:22:28] "POST /el_panel/config/modify HTTP/1.1" 500 -
+2020-01-07 19:22:53 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:22:53] "POST /el_panel/config/modify HTTP/1.1" 500 -
+2020-01-07 19:27:31 - Thread-1 - db_config.py:278 - ERROR - list index out of range
+2020-01-07 19:27:31 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 19:27:31] "POST /gui/config/modify HTTP/1.1" 400 -
+2020-01-07 19:33:46 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 19:33:46 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 19:33:46 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 19:33:46 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 19:39:51 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 19:39:51 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 19:39:51 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 19:39:51 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 19:40:25 - Thread-1 - db_config.py:163 - INFO - el_config_modify
+2020-01-07 19:40:25 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:40:25] "POST /el_panel/config/modify HTTP/1.1" 200 -
+2020-01-07 19:40:51 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:40:51] "POST /el_panel/config/modify HTTP/1.1" 500 -
+2020-01-07 19:44:30 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 19:44:30 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 19:44:30 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 19:44:30 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 19:46:22 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 19:46:23 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 19:46:23 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 19:46:23 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 19:46:56 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:46:56] "POST /el_panel/config/modify HTTP/1.1" 500 -
+2020-01-07 19:48:02 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:48:02] "POST /el_panel/config/modify HTTP/1.1" 500 -
+2020-01-07 19:48:04 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 19:48:04 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 19:48:04 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 19:48:04 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 19:48:18 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 19:48:18] "POST /el_panel/config/modify HTTP/1.1" 500 -
+2020-01-07 19:49:09 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 19:49:09 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 19:49:09 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 19:49:09 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 19:50:46 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 19:50:47 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 19:50:47 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 19:50:47 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:03:51 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:03:52 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:03:52 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:03:52 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:14:48 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:14:49 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:14:49 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:14:49 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:20:24 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:20:24 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:20:25 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:20:25 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:25:10 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:25:10] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-07 20:25:21 - Thread-1 - db_user.py:94 - INFO - admin_login_super admin
+2020-01-07 20:25:21 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:25:21] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-07 20:25:39 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 20:25:39] "POST /el_panel/config/modify HTTP/1.1" 500 -
+2020-01-07 20:25:51 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:25:51 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:25:51 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:25:51 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:26:09 - Thread-1 - db_config.py:160 - INFO - el_config_modify
+2020-01-07 20:26:09 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 20:26:09] "POST /el_panel/config/modify HTTP/1.1" 200 -
+2020-01-07 20:27:08 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:27:08] "POST /gui/config/modify HTTP/1.1" 412 -
+2020-01-07 20:27:22 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:27:22] "POST /gui/config/modify HTTP/1.1" 412 -
