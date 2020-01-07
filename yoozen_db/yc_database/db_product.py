@@ -1,7 +1,7 @@
 import time
 import json
 
-from ..utils.log_manager import logger
+from log_manager import logger
 from ..utils.const_def import (
     CELL_AMOUNT_COLLECTION, CELL_SHAPE_COLLECTION, CELL_TYPE_COLLECTION, AI_RESULT,
     DEFECT_TYPE_COLLECTION, GUI_RESULT, PANEL_LIMIT

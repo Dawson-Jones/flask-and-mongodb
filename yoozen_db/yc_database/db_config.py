@@ -1,6 +1,6 @@
 import json
 import time
-from yoozen_db.utils.log_manager import logger
+from log_manager import logger
 from yoozen_db.utils.update import update
 
 
@@ -69,12 +69,14 @@ class Config(object):
         return json.dumps(el_config), 200, {'Content-Type': 'application/json'}
 
     def el_panel_config_check(self, info: dict):
+        print(info)
         el_no = info.get('el_no')
         if not el_no:
             logger.error('incomplete params')
             return 'incomplete params', 421, {'Content-Type': 'application/json'}
 
         el_check = self.el_config_collection.find_one({'el_no': el_no}, {'_id': 0})
+        print("el_check: ", el_check)
         if not el_check:
             return 'null', 400, {'Content-Type': 'application/json'}
         logger.info('el_panel_config_check')

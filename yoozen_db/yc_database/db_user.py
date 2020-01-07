@@ -1,8 +1,7 @@
 import time
-import csv
 import json
 
-from yoozen_db.utils.log_manager import logger
+from log_manager import logger
 from yoozen_db.utils.update import update
 
 

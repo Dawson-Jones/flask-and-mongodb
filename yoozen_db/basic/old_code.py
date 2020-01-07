@@ -2,7 +2,7 @@ import time
 import csv
 import json
 
-from ..utils.log_manager import logger
+from log_manager import logger
 from .db import (
     user_collection, user_log_collection, permission_collection, panel_collection,
     el_string_collection, gui_setting_collection, el_config_collection
