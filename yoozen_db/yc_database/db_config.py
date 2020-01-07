@@ -251,7 +251,7 @@ class Config(object):
         admin_check = self.user_collection.find_one({"user_name": info["admin_name"], "activate": 1})
         if gui_check:
             try:
-                if gui_check["update_time"] == info["changed_items"]["update_time"]:
+                if gui_check["update_time"] == changed_items["update_time"]:
                     limit = list(self.el_config_collection.aggregate([
                         {'$match': {'gui_no': gui_no}},
                         {'$group': {'_id': '$gui_no', 'limit': {'$sum': 1}}}

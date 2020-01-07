@@ -193,3 +193,48 @@
 2020-01-07 20:26:09 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 20:26:09] "POST /el_panel/config/modify HTTP/1.1" 200 -
 2020-01-07 20:27:08 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:27:08] "POST /gui/config/modify HTTP/1.1" 412 -
 2020-01-07 20:27:22 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:27:22] "POST /gui/config/modify HTTP/1.1" 412 -
+2020-01-07 20:31:06 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:31:06] "POST /gui/config/modify HTTP/1.1" 412 -
+2020-01-07 20:32:01 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:32:01 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:32:01 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:32:01 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:32:44 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:32:44] "POST /gui/config/modify HTTP/1.1" 412 -
+2020-01-07 20:38:09 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:38:09 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:38:10 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:38:10 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:39:36 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:39:37 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:39:37 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:39:37 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:40:39 - Thread-1 - db_config.py:102 - INFO - gui_config_check
+2020-01-07 20:40:39 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:40:39] "POST /gui/config/check HTTP/1.1" 200 -
+2020-01-07 20:40:46 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:40:46] "POST /gui/config/modify HTTP/1.1" 412 -
+2020-01-07 20:41:15 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:41:15] "POST /gui/config/modify HTTP/1.1" 412 -
+2020-01-07 20:44:40 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:44:40 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:44:40 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:44:40 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:45:00 - Thread-1 - db_config.py:102 - INFO - gui_config_check
+2020-01-07 20:45:00 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:45:00] "POST /gui/config/check HTTP/1.1" 200 -
+2020-01-07 20:45:15 - Thread-1 - db_config.py:275 - INFO - gui_config_modify
+2020-01-07 20:45:15 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:45:15] "POST /gui/config/modify HTTP/1.1" 200 -
+2020-01-07 20:45:23 - Thread-1 - db_config.py:160 - INFO - el_config_modify
+2020-01-07 20:45:23 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 20:45:23] "POST /el_panel/config/modify HTTP/1.1" 200 -
+2020-01-07 20:46:07 - Thread-1 - _internal.py:122 - INFO - 192.168.1.7 - - [07/Jan/2020 20:46:07] "POST /el_panel/config/modify HTTP/1.1" 422 -
+2020-01-07 20:48:13 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:48:14 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:48:14 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:48:14 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:49:55 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:49:55 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:49:55 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:49:55 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
+2020-01-07 20:51:49 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:51:49] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-07 20:51:54 - Thread-1 - db_user.py:94 - INFO - admin_login_super admin
+2020-01-07 20:51:54 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:51:54] "POST /admin/user/login HTTP/1.1" 200 -
+2020-01-07 20:53:06 - Thread-1 - _internal.py:122 - INFO - 192.168.1.8 - - [07/Jan/2020 20:53:06] "GET /admin/user/display HTTP/1.1" 200 -
+2020-01-07 20:54:33 - MainThread - _internal.py:122 - INFO -  * Detected change in '/home/ubuntu/PycharmProjects/SolarPanel/yoozen_db/yc_database/db_config.py', reloading
+2020-01-07 20:54:33 - MainThread - _internal.py:122 - INFO -  * Restarting with stat
+2020-01-07 20:54:33 - MainThread - _internal.py:122 - WARNING -  * Debugger is active!
+2020-01-07 20:54:33 - MainThread - _internal.py:122 - INFO -  * Debugger PIN: 132-052-671
