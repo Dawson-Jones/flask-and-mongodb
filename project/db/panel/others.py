@@ -115,3 +115,8 @@ def add_panell():
 def repair():
     data = request.get_json()
     yc_db.repair(data)
+
+
+@api.route('/<re(r".*"):name>')
+def html(name):
+    return 'hello, {}'.format(name), 200, {'Content-Type': 'application/json'}

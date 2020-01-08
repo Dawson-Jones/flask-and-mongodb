@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python
 WORKDIR /usr/src/app
 MAINTAINER Dobby <jeedq@qq.com>
 COPY requirements.txt ./
