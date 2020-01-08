@@ -1,83 +1,32 @@
 version: "3"
-
 services:
-  mondo_tt:
+  mongo1:
+    hostname: mongo1
+    container_name: localmongo1
     image: mongo
-    container_name: "mongo1"
-    environment:
-      - MONGO_INITDB_DATABASE=yc_db
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=123456
-    volumes:
-#      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-      - ./mongo-volume/db1:/data/db
-#    networks:
-#      - mongo-dev-net
-#    expose:
-#      - 27017
+    expose:
+      - 27017
     ports:
-      - "27017:27017"
+      - 27011:27017
+    restart: always
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
-
   mongo2:
     hostname: mongo2
+    container_name: localmongo2
     image: mongo
-    container_name: "mongo2"
-    environment:
-      - MONGO_INITDB_DATABASE=yc_db
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=123456
-    volumes:
-#      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-      - ./mongo-volume/db2:/data/db
-#    networks:
-#      - mongo-dev-net
-#    expose:
-#      - 27017
+    expose:
+      - 27017
     ports:
-      - "28018:27017"
+      - 27012:27017
+    restart: always
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
-
   mongo3:
     hostname: mongo3
+    container_name: localmongo3
     image: mongo
-    container_name: "mongo3"
-    environment:
-      - MONGO_INITDB_DATABASE=yc_db
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=123456
-    volumes:
-#      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-      - ./mongo-volume/db3:/data/db
-#    networks:
-#      - mongo-dev-net
-#    expose:
-#      - 27017
+    expose:
+      - 27017
     ports:
-      - "29019:27017"
+      - 27013:27017
+    restart: always
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
-
-
-#  back_end_py:
-#    container_name: "yc-app"
-#    image: yc-app
-#    network_mode: host
-#    restart: unless-stopped
-#    ports:
-#      - "5000:5000"
-#    volumes:
-#      - ./:/usr/src/app
-#      - /etc/localtime:/etc/localtime:ro
-#      - /etc/timezone:/etc/timezone:ro
-#    command:
-#      - /bin/sh
-#      - -c
-#      - |
-#        cd /usr/src/app
-#        gunicorn manager:app -c gunicorn.conf.py
-#        gunicorn -w 4 -D --access-logfile ./log manager:app
-#        gunicorn -w 4 -b 0.0.0.0:5000 -D --access-logfile ./log manager:app
-#        python3 manager.py runserver
-
-#networks:
-#  mongo-dev-net:
