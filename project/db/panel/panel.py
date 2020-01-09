@@ -1,4 +1,3 @@
-import json
 import time
 from flask import request, jsonify
 from . import api
@@ -53,4 +52,10 @@ def panel_check():
     res = list(res)
     if not res:
         return jsonify(resno=RET.NODATA, msg='there is no matching data')
+    for i in res:
+        num = panel_collection.count_documents({'barcode': i['barcode'], "create_time": {
+            '$lte': i['create_time']
+        }})
+        # print(f'{i["barcode"]}: {num}')
+        i['times_of_storage'] = num
     return jsonify(resno=RET.OK, msg=res)
