@@ -80,7 +80,7 @@ def gen_csv():
 
 
 @api.route('/add_panel_test')
-def add_panell():
+def add_panel():
     # 函数不能重名
     data_list = list()
     for i in range(10):
@@ -116,7 +116,3 @@ def repair():
     data = request.get_json()
     yc_db.repair(data)
 
-
-@api.route('/<re(r".*"):name>')
-def html(name):
-    return 'hello, {}'.format(name), 200, {'Content-Type': 'application/json'}

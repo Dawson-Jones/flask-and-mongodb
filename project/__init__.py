@@ -17,10 +17,11 @@ def create_app(config_name):
 
     app.url_map.converters['re'] = ReConverter
 
-    from project.db import admin, gui, panel
+    from project.db import admin, gui, panel, other
     app.register_blueprint(admin.app, url_prefix='/admin')
     app.register_blueprint(gui.app, url_prefix='/gui')
-    app.register_blueprint(panel.api)
+    app.register_blueprint(panel.api, url_prefix='/el_panel')
+    # app.register_blueprint(other.api)
 
     return app
 
