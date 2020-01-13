@@ -142,7 +142,7 @@ class User(object):
             'admin_id': admin_check["_id"],
             'admin_name': admin_name,
             'time': info_time,
-            'action': "%s add_user %s" % (admin_name, user_name)
+            'action': "add_user %s" % user_name
         })
         logger.info("user_add{%s}" % user_name)
         return update(), 200, {'Content-Type': 'application/json'}
@@ -208,7 +208,7 @@ class User(object):
         changed_after = dict()
         if user_check['update_time'] == cg_update_time:
             for key, value in changed_items.items():
-                if pre_data := user_check.get(key) != value:
+                if (pre_data := user_check.get(key)) != value:
                     changed_before[key] = pre_data
                     changed_after[key] = value
                     user_check[key] = value
@@ -217,10 +217,11 @@ class User(object):
             self.user_log_collection.insert_one({
                 'admin_id': admin_check['_id'],
                 'admin_name': admin_name,
+                'user_name': user_name,
                 'time': info_time,
                 'action': "user change",
                 'changed_before': changed_before,
-                'changed_after': changed_items
+                'changed_after': changed_after
             })
             logger.info("user_modify_%s" % user_name)
             return update(), 200, {'Content-Type': 'application/json'}
@@ -282,31 +283,33 @@ class User(object):
         admin_check = self.user_collection.find_one({'user_name': admin_name, 'activate': 1})
         if admin_check.get('type') != 'yc_admin':
             return 'permission denied', 423, {'Content-Type': 'application/json'}
-        changed_before = dict()
-        changed_after = dict()
         for i in changed_items:
             try:
                 permission_check = self.permission_collection.find_one({'type': i['type']})
                 if permission_check['update_time'] != i['update_time']:
                     return update(), 422, {'Content-Type': 'application/json'}
+                changed_before = dict()
+                changed_after = dict()
                 for key, value in i.items():
-                    if pre_data := permission_check.get(key) != value:
+                    if (pre_data := permission_check.get(key)) != value:
                         changed_before[key] = pre_data
                         changed_after[key] = value
                         permission_check[key] = value
                 permission_check['update_time'] = t
                 self.permission_collection.replace_one({'type': i['type']}, permission_check)
+                if changed_after:
+                    self.user_log_collection.insert_one({
+                        'admin_id': admin_check['_id'],
+                        'admin_name': admin_name,
+                        'type': i['type'],
+                        'time': info_time,
+                        'action': "change permission config",
+                        'changed_before': changed_before,
+                        'changed_after': changed_after
+                    })
+                    logger.info('permission_modify')
             except Exception as e:
                 logger.error(str(e))
                 return update(), 400, {'Content-Type': 'application/json'}
-        self.user_log_collection.insert_one({
-            'admin_id': admin_check['_id'],
-            'admin_name': admin_name,
-            'time': info_time,
-            'action': "change permission config",
-            'changed_before': changed_before,
-            'changed_after': changed_items
-        })
-        logger.info('permission_modify')
 
         return update(), 200, {'Content-Type': 'application/json'}

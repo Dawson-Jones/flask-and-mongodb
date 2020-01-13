@@ -141,7 +141,7 @@ class Config(object):
             changed_before = dict()
             changed_after = dict()
             for key, value in changed_items.items():
-                if pre_data := el_check.get(key) != value:
+                if (pre_data := el_check.get(key)) != value:
                     changed_before[key] = pre_data
                     changed_after[key] = value
                     el_check[key] = value
@@ -362,7 +362,7 @@ class Config(object):
                 changed_before = dict()
                 changed_after = dict()
                 for key, value in changed_items.items():
-                    if pre_data := el_check.get(key) != value:
+                    if (pre_data := el_check.get(key)) != value:
                         changed_before[key] = pre_data
                         changed_after[key] = value
                         el_check[key] = value
@@ -411,7 +411,7 @@ class Config(object):
             changed_before = dict()
             changed_after = dict()
             for key, value in changed_items.items():
-                if pre_data := gui_check.get(key) != value:
+                if (pre_data := gui_check.get(key)) != value:
                     changed_before[key] = pre_data
                     changed_after[key] = value
                     gui_check[key] = value

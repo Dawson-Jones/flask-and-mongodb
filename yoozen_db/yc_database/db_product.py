@@ -19,7 +19,8 @@ class Product(object):
         t = time.localtime(time.time())
         time1 = time.mktime(time.strptime(time.strftime('%Y-%m-%d 00:00:00', t), '%Y-%m-%d %H:%M:%S'))
         time2 = time.mktime(time.strptime(time.strftime('%Y-%m-%d 23:59:59', t), '%Y-%m-%d %H:%M:%S'))
-        data = self.panel_collection.find({create_time: {'$gte': time1, '$lt': time2}}).count()
+        # data = self.panel_collection.find({create_time: {'$gte': time1, '$lt': time2}}).count()
+        data = self.panel_collection.count_documents({create_time: {'$gte': time1, '$lt': time2}})
         if data >= amount:
             return False
         else:
@@ -41,6 +42,8 @@ class Product(object):
         origin_defects = info.get('origin_defects')
         ap_result = info.get('ap_result')
         ap_defects = info.get('ap_defects')
+        gui_defects = info.get('gui_defects')
+        origin_defects = info.get('origin_defects')
         if not all([
             barcode, create_time, el_no, mes_defects, cell_type, cell_shape,
             cell_amount, display_mode, ai_result, gui_result, ap_result
@@ -152,8 +155,6 @@ class Product(object):
                 })
             else:
                 self.panel_collection.insert_one({
-                    "mes_defects": mes_defects,
-                    "ap_defects": ap_defects,
                     'barcode': barcode,
                     'cell_type': cell_type,
                     'cell_amount': cell_amount,
@@ -163,7 +164,9 @@ class Product(object):
                     'create_time': create_time,
                     'origin_defects': origin_defects,
                     'defects': defects,
-                    'status': status
+                    'status': status,
+                    "mes_defects": mes_defects,
+                    "ap_defects": ap_defects
                 })
         else:
             logger.error('panel limited')
