@@ -13,7 +13,7 @@ def agg():
     print(limit)
     return 'yes'
 
-
+inserted_id
 def query():
     res = panel_collection.find({}).sort('create_time', -1)
     print(len(list(res)))

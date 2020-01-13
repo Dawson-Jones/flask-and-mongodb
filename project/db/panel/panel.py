@@ -33,10 +33,10 @@ def modify_panel_config():
     return yc_db.el_panel_config_modify(data)
 
 
-@api.route('/thresholds/modify', methods=['POST'])
-def modify_thresholds():
-    data = request.get_json()
-    return yc_db.el_panel_thresholds_modify(data)
+# @api.route('/thresholds/modify', methods=['POST'])
+# def modify_thresholds():
+#     data = request.get_json()
+#     return yc_db.el_panel_thresholds_modify(data)
 
 
 @api.route('/report')
