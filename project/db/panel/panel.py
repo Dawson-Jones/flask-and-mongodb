@@ -39,7 +39,7 @@ def modify_thresholds():
     return yc_db.el_panel_thresholds_modify(data)
 
 
-@api.route('/find')
+@api.route('/report')
 def panel_check():
     hours = request.args.get('hours', '4')
     try:
