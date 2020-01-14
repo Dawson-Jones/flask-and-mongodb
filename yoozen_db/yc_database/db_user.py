@@ -43,7 +43,7 @@ class User(object):
         if user_check:
             self.user_log_collection.insert_one({
                 'user_id': user_check['_id'],
-                'user_name': user_name,
+                'operator': user_name,
                 'time': info_time,
                 'action': 'operator login'
             })
@@ -75,8 +75,10 @@ class User(object):
         if user_check['type'] == 'operator':
             return "not admin", 421, {'Content-Type': 'application/json'}
         self.user_log_collection.insert_one({
-            'user_id': user_check['_id'],
-            'user_name': user_name,
+            'id': {
+                'user_id': user_check['_id']
+            },
+            'operator': user_name,
             'time': info_time,
             'action': "admin login"
         })
@@ -139,8 +141,12 @@ class User(object):
         self.user_collection.insert_one({"user_name": user_name, "user_pw": user_pw, "activate": 1,
                                          "type": user_type, "update_time": t})
         self.user_log_collection.insert_one({
-            'admin_id': admin_check["_id"],
-            'admin_name': admin_name,
+            'id': {
+                'admin_id': admin_check["_id"],
+                'user_id': user_check['_id']
+            },
+            'operator': admin_name,
+            'user_name': user_name,
             'time': info_time,
             'action': "add_user %s" % user_name
         })
@@ -170,11 +176,14 @@ class User(object):
         user_check['update_time'] = t
         self.user_collection.replace_one({'user_name': user_name, 'activate': 1}, user_check)
         self.user_log_collection.insert_one({
-            'user_id': user_check['_id'],
-            'admin_id': admin_check['_id'],
-            'admin_name': admin_name,
+            'id': {
+                'user_id': user_check['_id'],
+                'admin_id': admin_check['_id']
+            },
+            'operator': admin_name,
+            'user_name': user_name,
             'time': info_time,
-            'action': "%s del_user %s" % (admin_name, user_name)
+            'action': "del_user %s" % user_name
         })
         logger.info("user_del_%s" % (info["user_name"]))
         return update(), 200, {'Content-Type': 'application/json'}
@@ -215,15 +224,18 @@ class User(object):
             user_check['update_time'] = t
             self.user_collection.replace_one({"_id": user_check["_id"], "activate": 1}, user_check)
             self.user_log_collection.insert_one({
-                'admin_id': admin_check['_id'],
-                'admin_name': admin_name,
+                'id': {
+                    'admin_id': admin_check['_id'],
+                    'user_id': user_check['_id']
+                },
+                'operator': admin_name,
                 'user_name': user_name,
                 'time': info_time,
-                'action': "user change",
+                'action': "user %s changed" % user_name,
                 'changed_before': changed_before,
                 'changed_after': changed_after
             })
-            logger.info("user_modify_%s" % user_name)
+            logger.info("user modify %s" % user_name)
             return update(), 200, {'Content-Type': 'application/json'}
         else:
             return update(), 422, {'Content-Type': 'application/json'}
@@ -299,8 +311,10 @@ class User(object):
                 self.permission_collection.replace_one({'type': i['type']}, permission_check)
                 if changed_after:
                     self.user_log_collection.insert_one({
-                        'admin_id': admin_check['_id'],
-                        'admin_name': admin_name,
+                        'id': {
+                            'admin_id': admin_check['_id']
+                        },
+                        'operator': admin_name,
                         'type': i['type'],
                         'time': info_time,
                         'action': "change permission config",

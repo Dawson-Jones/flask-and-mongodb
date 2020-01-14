@@ -151,9 +151,11 @@ class Config(object):
             el_check["update_time"] = t
             self.el_config_collection.replace_one({"el_no": el_no}, el_check)
             self.user_log_collection.insert_one({
-                'admin_id': admin_check['_id'],
-                'admin_name': admin_name,
-                'el_id': el_check.get('_id'),
+                'id': {
+                    'admin_id': admin_check['_id'],
+                    'el_id': el_check.get('_id'),
+                },
+                'operator': admin_name,
                 'el_no': el_no,
                 'time': info['time'],
                 'action': "change el_config",
@@ -369,9 +371,11 @@ class Config(object):
                 el_check['thresholds']['update_time'] = t
                 self.el_config_collection.replace_one({'el_no': el_no}, el_check)
                 self.user_log_collection.insert_one({
-                    'admin_id': admin_check['_id'],
-                    'admin_name': admin_name,
-                    'el_id': el_check['_id'],
+                    'id': {
+                        'admin_id': admin_check['_id'],
+                        'el_id': el_check['_id']
+                    },
+                    'operator': admin_name,
                     'el_no': el_no,
                     'time': info_time,
                     'action': "change_el config",
@@ -418,9 +422,11 @@ class Config(object):
             gui_check['update_time'] = t
             self.gui_setting_collection.replace_one({"gui_no": gui_no}, gui_check)
             self.user_log_collection.insert_one({
-                'admin_id': admin_check['_id'],
-                'admin_name': admin_name,
-                'gui_id': gui_check['_id'],
+                'id': {
+                    'admin_id': admin_check['_id'],
+                    'gui_id': gui_check['_id']
+                },
+                'operator': admin_name,
                 'gui_no': gui_no,
                 'time': info_time,
                 'action': "change gui_config",

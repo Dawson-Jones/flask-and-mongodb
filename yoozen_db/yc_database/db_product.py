@@ -38,8 +38,6 @@ class Product(object):
         ai_result = info.get('ai_result')
         ai_defects = info.get('ai_defects')
         gui_result = info.get('gui_result')
-        gui_defects = info.get('gui_defects')
-        origin_defects = info.get('origin_defects')
         ap_result = info.get('ap_result')
         ap_defects = info.get('ap_defects')
         gui_defects = info.get('gui_defects')
@@ -236,7 +234,6 @@ class Product(object):
 
     def barcode_find(self, info):
         barcode = info.get('barcode')
-        print(barcode)
         if not barcode:
             logger.error('incomplete params')
             return 'incomplete params', 421
