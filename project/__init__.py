@@ -21,7 +21,7 @@ def create_app(config_name):
     app.register_blueprint(admin.app, url_prefix='/admin')
     app.register_blueprint(gui.app, url_prefix='/gui')
     app.register_blueprint(panel.api, url_prefix='/el_panel')
-    # app.register_blueprint(other.api)
+    app.register_blueprint(other.api)
 
     return app
 

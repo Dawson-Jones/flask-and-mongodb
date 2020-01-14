@@ -1,4 +1,4 @@
 from flask import Blueprint
 
-api = Blueprint('panel', __name__)
+api = Blueprint('other', __name__)
 from . import others

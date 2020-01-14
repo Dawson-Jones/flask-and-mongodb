@@ -39,23 +39,4 @@ def modify_thresholds():
     return yc_db.el_panel_thresholds_modify(data)
 
 
-@api.route('/report')
-def panel_check():
-    hours = request.args.get('hours', '4')
-    try:
-        hours = int(hours)
-    except Exception as e:
-        logger.error(e)
-        return jsonify(resno=RET.PARAMERR, msg='param must be a integer')
-    res = panel_collection.find({"create_time": {"$gt": time.time() - hours * 3600}}, {'_id': 0})
-    res.sort('create_time', -1)
-    res = list(res)
-    if not res:
-        return jsonify(resno=RET.NODATA, msg='there is no matching data')
-    for i in res:
-        num = panel_collection.count_documents({'barcode': i['barcode'], "create_time": {
-            '$lte': i['create_time']
-        }})
-        # print(f'{i["barcode"]}: {num}')
-        i['times_of_storage'] = num
-    return jsonify(resno=RET.OK, msg=res)
+
