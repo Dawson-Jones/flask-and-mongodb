@@ -12,3 +12,6 @@ el_string_collection = db['el_string']
 gui_setting_collection = db['gui_setting']
 panel_collection = db['panel']
 test_collection = db['test']
+
+
+test_collection.insert()

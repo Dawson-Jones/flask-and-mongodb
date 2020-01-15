@@ -124,18 +124,18 @@ def gen_report():
     context = dict()
     if start_time:
         try:
-            start_time = time.mktime(time.strptime(start_time, '%Y-%m-%d'))
+            start_time = float(start_time)
         except Exception as e:
             logger.error(e)
-            return jsonify(errno=RET.PARAMERR, msg='time format error')
+            return jsonify(errno=RET.PARAMERR, msg='time type error')
         context['create_time'] = dict()
         context['create_time']['$gt'] = start_time
     if end_time:
         try:
-            end_time = time.mktime(time.strptime(end_time, '%Y-%m-%d')) + 24 * 3600
+            end_time = float(end_time)
         except Exception as e:
             logger.error(e)
-            return jsonify(errno=RET.PARAMERR, msg='time format error')
+            return jsonify(errno=RET.PARAMERR, msg='time type error')
         if context.get('create_time') is None:
             context['create_time'] = dict()
         context['create_time']['$lte'] = end_time
