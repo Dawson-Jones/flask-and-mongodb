@@ -42,6 +42,8 @@ class Product(object):
         ap_defects = info.get('ap_defects')
         gui_defects = info.get('gui_defects')
         origin_defects = info.get('origin_defects')
+        mes_res = info.get('mes_res')
+        stack_equipment = info.get('stack_equipment')
         if not all([
             barcode, create_time, el_no, mes_defects, cell_type, cell_shape,
             cell_amount, display_mode, ai_result, gui_result, ap_result
@@ -109,6 +111,12 @@ class Product(object):
                     logger.error('ap_defects wrong')
                     return 'ap_defects wrong', 412
 
+        try:
+            assert isinstance(mes_res, str) and isinstance(stack_equipment, str)
+        except Exception as e:
+            logger.error('mes_res and stack_equipment should be string')
+            return 'mes_res and stack_equipment should be string', 411
+
         defects = list()
         status = dict()
         status['EL_AI'] = ai_result
@@ -164,13 +172,15 @@ class Product(object):
                     'defects': defects,
                     'status': status,
                     "mes_defects": mes_defects,
-                    "ap_defects": ap_defects
+                    "ap_defects": ap_defects,
+                    'mes_res': mes_res,
+                    'stack_equipment': stack_equipment,
                 })
         else:
             logger.error('panel limited')
             return "too much panels", 400
         logger.info('add panel')
-        return '1', 200
+        return '1', 200, {'Content-Type': 'application/json'}
 
     def string_add(self, info):
         image_id = info.get('image_id')
