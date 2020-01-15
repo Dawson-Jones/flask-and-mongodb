@@ -44,12 +44,6 @@ class Product(object):
         origin_defects = info.get('origin_defects')
         mes_res = info.get('mes_res')
         stack_equipment = info.get('stack_equipment')
-        if not all([
-            barcode, create_time, el_no, mes_defects, cell_type, cell_shape,
-            cell_amount, display_mode, ai_result, gui_result, ap_result
-        ]):
-            logger.error('incomplete params')
-            return 'incomplete params', 400
 
         if not isinstance(mes_defects, str):
             logger.error('mes_defects should be dict')
@@ -110,18 +104,19 @@ class Product(object):
                 if k not in DEFECT_TYPE_COLLECTION:
                     logger.error('ap_defects wrong')
                     return 'ap_defects wrong', 412
-
-        try:
-            assert isinstance(mes_res, str) and isinstance(stack_equipment, str)
-        except Exception as e:
+        if mes_res and stack_equipment and not (isinstance(mes_res, str) and isinstance(stack_equipment, str)):
             logger.error('mes_res and stack_equipment should be string')
             return 'mes_res and stack_equipment should be string', 411
 
         defects = list()
-        status = dict()
-        status['EL_AI'] = ai_result
-        status['EL_OP'] = gui_result
-        status['AP_OP'] = ap_result
+        # status = dict()                   # \
+        # status['EL_AI'] = ai_result       # --  new
+        # status['EL_OP'] = gui_result      # -- struct
+        # status['AP_OP'] = ap_result       # /
+        status = list()                     # new struct no this
+        status.append({'result': ai_result, 'by': 'AI'})
+        status.append({'result': gui_result, 'by': 'OP'})
+
         if ai_defects:
             if not gui_defects:
                 for key, values in ai_defects.items():
@@ -172,6 +167,7 @@ class Product(object):
                     'defects': defects,
                     'status': status,
                     "mes_defects": mes_defects,
+                    'ap_result': ap_result,  # new struct no this
                     "ap_defects": ap_defects,
                     'mes_res': mes_res,
                     'stack_equipment': stack_equipment,
