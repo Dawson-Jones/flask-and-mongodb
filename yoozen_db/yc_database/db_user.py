@@ -3,6 +3,7 @@ import json
 
 from log_manager import logger
 from yoozen_db.utils.update import update
+from bson.objectid import ObjectId
 
 
 class User(object):
@@ -42,22 +43,20 @@ class User(object):
             {"user_name": user_name, "user_pw": user_pw, "activate": 1})
         if user_check:
             self.user_log_collection.insert_one({
-                'user_id': user_check['_id'],
+                'id': {
+                    'user_id': user_check['_id']
+                },
                 'operator': user_name,
                 'time': info_time,
-                'action': 'operator login'
+                'action': 'operator %s login' % user_name
             })
-            logger.info("login_%s" % user_name)
+            logger.info("login %s" % user_name)
             return user_check['type'], 200
         else:
             logger.error("user:%s didn't exist" % user_name)
             return 'login failed', 421
 
     def user_login_admin(self, info: dict):
-        # with open('yoozen_db/SETUP/url.csv', 'r', newline='') as f:
-        #     reader = csv.DictReader(f)
-        #     for csv_url in reader:
-        #         url = csv_url
         res = dict()
         user_name = info.get('user_name')
         user_pw = info.get('user_pw')
@@ -80,7 +79,7 @@ class User(object):
             },
             'operator': user_name,
             'time': info_time,
-            'action': "admin login"
+            'action': "admin %s login" % user_name
         })
 
         res['type'] = user_check['type']
@@ -138,17 +137,17 @@ class User(object):
         user_check = self.user_collection.find_one({'user_name': user_name, 'activate': 1})
         if user_check:
             return 'user exists', 413, {'Content-Type': 'application/json'}
-        self.user_collection.insert_one({"user_name": user_name, "user_pw": user_pw, "activate": 1,
+        res = self.user_collection.insert_one({"user_name": user_name, "user_pw": user_pw, "activate": 1,
                                          "type": user_type, "update_time": t})
         self.user_log_collection.insert_one({
             'id': {
                 'admin_id': admin_check["_id"],
-                'user_id': user_check['_id']
+                'user_id': ObjectId(res.inserted_id)
             },
             'operator': admin_name,
             'user_name': user_name,
             'time': info_time,
-            'action': "add_user %s" % user_name
+            'action': "%s add user %s" % (admin_name, user_name)
         })
         logger.info("user_add{%s}" % user_name)
         return update(), 200, {'Content-Type': 'application/json'}
@@ -183,7 +182,7 @@ class User(object):
             'operator': admin_name,
             'user_name': user_name,
             'time': info_time,
-            'action': "del_user %s" % user_name
+            'action': "%s delete user %s" % (admin_name, user_name)
         })
         logger.info("user_del_%s" % (info["user_name"]))
         return update(), 200, {'Content-Type': 'application/json'}

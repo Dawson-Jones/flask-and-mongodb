@@ -76,21 +76,21 @@ class Product(object):
             if not isinstance(ai_defects, dict):
                 logger.error('ai_defects should be dict')
                 return 'ai_defects should be dict', 411
-            for k in ai_defects.keys():
-                if k not in DEFECT_TYPE_COLLECTION:
-                    logger.error('ai_defects wrong')
-                    return 'ai_defects wrong', 412
-        if gui_result not in GUI_RESULT:
-            logger.error('gui_result should be %s' % (','.join(GUI_RESULT)))
-            return 'gui_result should be %s' % (','.join(GUI_RESULT)), 412
+            # for k in ai_defects.keys():
+            #     if k not in DEFECT_TYPE_COLLECTION:
+            #         logger.error('ai_defects wrong')
+            #         return 'ai_defects wrong', 412
+        # if gui_result not in GUI_RESULT:
+        #     logger.error('gui_result should be %s' % (','.join(GUI_RESULT)))
+        #     return 'gui_result should be %s' % (','.join(GUI_RESULT)), 412
         if gui_defects:
             if not isinstance(gui_defects, dict):
                 logger.error('gui_defects should be dict')
                 return 'gui_defects should be dict', 411
-            for k in gui_defects.keys():
-                if k not in DEFECT_TYPE_COLLECTION:
-                    logger.error('gui_defects wrong')
-                    return 'gui_defects wrong', 411
+            # for k in gui_defects.keys():
+            #     if k not in DEFECT_TYPE_COLLECTION:
+            #         logger.error('gui_defects wrong')
+            #         return 'gui_defects wrong', 411
         if not origin_defects:
             origin_defects = dict()
         if ap_result not in AI_RESULT:
@@ -100,10 +100,10 @@ class Product(object):
             if not isinstance(ap_defects, dict):
                 logger.error('ap_defects should be dict')
                 return 'ap_defects should be dict', 411
-            for k in ap_defects.keys():
-                if k not in DEFECT_TYPE_COLLECTION:
-                    logger.error('ap_defects wrong')
-                    return 'ap_defects wrong', 412
+            # for k in ap_defects.keys():
+            #     if k not in DEFECT_TYPE_COLLECTION:
+            #         logger.error('ap_defects wrong')
+            #         return 'ap_defects wrong', 412
         if mes_res and stack_equipment and not (isinstance(mes_res, str) and isinstance(stack_equipment, str)):
             logger.error('mes_res and stack_equipment should be string')
             return 'mes_res and stack_equipment should be string', 411
