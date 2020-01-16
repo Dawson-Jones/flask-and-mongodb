@@ -7,6 +7,7 @@ from log_manager import logger
 from project.utils.response_code import RET
 from yoozen_db.yc_database import panel_collection
 from yoozen_db.yc_database import YcDataBase
+from .make_report import make_report
 
 yc_db = YcDataBase()
 
@@ -149,7 +150,8 @@ def gen_report():
     res = panel_collection.find(context, {'_id': 0})
     res.sort('create_time', -1)
     res = list(res)
-    if not res:
+
+    if not panel_collection.count_documents(context):
         return jsonify(resno=RET.NODATA, msg='there is no matching data')
 
     # calculate how many times the data appears in the database
@@ -159,4 +161,6 @@ def gen_report():
         }})
         # print(f'{i["barcode"]}: {num}')
         i['times_of_storage'] = num
-    return jsonify(errno=RET.OK, msg=res)
+
+    res_li = make_report(res)
+    return jsonify(errno=RET.OK, msg=res_li)
