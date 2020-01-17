@@ -1,6 +1,5 @@
 import time
-import requests
-import json
+from yoozen_db.yc_database import panel_collection
 
 
 def combine_list(li: list, *args) -> list:
@@ -80,17 +79,17 @@ def make_report(res):
         else:
             filed.append('%s %02d:00-%d:00' % (y_m_d, hour, hour + 2))
         judge_res = data['status']
-        for i in judge_res:
-            if i['by'] == 'AI':
-                filed.append(i['result'])
-                assert len(filed) == 4
-            if i['by'] == 'OP':
-                filed.append(i['result'])
-                assert len(filed) == 5
+        if len(judge_res) != 2:
+            continue
+        filed.append(judge_res[0].get('result') if judge_res[0].get('result') else 'N/A')
+        filed.append(judge_res[1].get('result') if judge_res[1].get('result') else 'N/A')
         filed.append(data.get('ap_result') if data.get('ap_result') else 'N/A')  # ap 判定结果
         el_no = data['el_no']
         filed.append(el_no)  # 扫码机台
-        filed.append(data['times_of_storage'])  # 组件测试次数
+        num = panel_collection.count_documents({'barcode': data['barcode'], "create_time": {
+            '$lte': data['create_time']
+        }})
+        filed.append(num)  # 组件测试次数
         filed.append(data.get('mes_res') if data.get('mes_res') else '暂无')
         filed.append(data.get('stack_equipment') if data.get('stack_equipment') else '暂无')
 

@@ -6,7 +6,7 @@ from project.utils.response_code import RET
 
 
 # GET /admin/log?
-@app.route('log')
+@app.route('/log')
 def log():
     start_time = request.args.get('timeStart', '')
     end_time = request.args.get('timeEnd', '')

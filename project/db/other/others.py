@@ -1,6 +1,3 @@
-import time
-import csv
-import random
 from . import api
 from flask import request, jsonify
 from log_manager import logger
@@ -146,20 +143,22 @@ def gen_report():
         except Exception as e:
             logger.error(e)
             return jsonify(errno=RET.PARAMERR, msg='date params wrong')
-    res = panel_collection.find(context, {'_id': 0})
-    res.sort('create_time', -1)
-    res = list(res)
-
-    if not panel_collection.count_documents(context):
+    res = panel_collection.find(context, {
+        '_id': 0,
+        'barcode': 1,
+        'create_time': 1,
+        'status': 1,
+        'ap_result': 1,
+        'el_no': 1,
+        'mes_res': 1,
+        'stack_equipment': 1,
+        'cell_amount': 1,
+        'defects': 1,
+        'ap_defects': 1
+    })
+    # res.sort('create_time', -1)
+    if not res:
         return jsonify(errno=RET.NODATA, msg='there is no matching data')
-
-    # calculate how many times the data appears in the database
-    for i in res:
-        num = panel_collection.count_documents({'barcode': i['barcode'], "create_time": {
-            '$lte': i['create_time']
-        }})
-        # print(f'{i["barcode"]}: {num}')
-        i['times_of_storage'] = num
 
     res_li = make_report(res)
     return jsonify(errno=RET.OK, msg=res_li)
