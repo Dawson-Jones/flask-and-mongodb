@@ -20,7 +20,7 @@ yc_db = YcDataBase()
 #         hours = int(hours)
 #     except Exception as e:
 #         logger.error(e)
-#         return jsonify(resno=RET.PARAMERR, msg='param must be a integer')
+#         return jsonify(errno=RET.PARAMERR, msg='param must be a integer')
 #
 #     csv_data = [
 #         ["组件条码", "机台号", "判定用时", "返工组件？", "结果上传时间",
@@ -29,7 +29,7 @@ yc_db = YcDataBase()
 #     timestamp = time.time()
 #     res = panel_collection.find({"create_time": {"$gt": time.time() - hours * 3600}}).sort('create_time', -1)
 #     if not res.count():
-#         return jsonify(resno=RET.NODATA, msg='there is no matching data')
+#         return jsonify(errno=RET.NODATA, msg='there is no matching data')
 #
 #     flag = True
 #     for i in res:
@@ -77,7 +77,7 @@ yc_db = YcDataBase()
 #         #     writer.writerow(row)
 #         writer.writerows(csv_data)
 #
-#     return jsonify(resno=RET.OK, msg='generated')
+#     return jsonify(errno=RET.OK, msg='generated')
 
 
 # @api.route('/add_panel_test')
@@ -109,7 +109,7 @@ yc_db = YcDataBase()
 #
 #     result = panel_collection.insert_many(data_list)
 #     if result.inserted_ids:
-#         return jsonify(resno=RET.OK, msg='add success')
+#         return jsonify(errno=RET.OK, msg='add success')
 
 
 @api.route('/repair', methods=['POST'])
@@ -146,13 +146,12 @@ def gen_report():
         except Exception as e:
             logger.error(e)
             return jsonify(errno=RET.PARAMERR, msg='date params wrong')
-
     res = panel_collection.find(context, {'_id': 0})
     res.sort('create_time', -1)
     res = list(res)
 
     if not panel_collection.count_documents(context):
-        return jsonify(resno=RET.NODATA, msg='there is no matching data')
+        return jsonify(errno=RET.NODATA, msg='there is no matching data')
 
     # calculate how many times the data appears in the database
     for i in res:

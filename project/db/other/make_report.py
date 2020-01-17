@@ -115,7 +115,8 @@ def make_report(res):
         for defect in data['defects']:
             if defect["by"] == 'OP' and defect['position']['c'] not in ai_position:
                 form = defect['type']
-                form = info_map['EL_CODE'][form]
+                # form = info_map['EL_CODE'][form]
+                form = info_map['EL_CODE'].get(form) if info_map['EL_CODE'].get(form) else 'NG其他'
                 position = defect['position']["c"]
                 key = f'{form}#{position}'
                 if not many_cracks_op.get(key):
@@ -125,7 +126,7 @@ def make_report(res):
             if defect['by'] != 'AI':
                 continue
             form = defect['type']
-            form = info_map['EL_CODE'][form]
+            form = info_map['EL_CODE'].get(form) if info_map['EL_CODE'].get(form) else 'NG其他'
             position = defect['position']["c"]
             position = convert_coord(flag, position, cell_amount)
             deleted = 'Y' if defect["status"] == 'true' else 'N'

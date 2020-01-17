@@ -65,7 +65,15 @@ def log():
         return jsonify(errno=RET.PARAMERR, msg='page or size must be a integer')
 
     res = user_log_collection.find(
-        context, {'_id': 0, 'id': 0}).sort('time', -1).limit(size).skip((page - 1) * size)
+        context, {
+            '_id': 0,
+            'operator': 1,
+            'time': 1,
+            'action': 1,
+            'el_no': 1,
+            'changed_before': 1,
+            'changed_after': 1
+        }).sort('time', -1).limit(size).skip((page - 1) * size)
     amount = user_log_collection.count_documents(context)
     pages = amount // size + 1
     if not amount:
