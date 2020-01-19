@@ -24,7 +24,7 @@ def convert_coord(flag: bool, position: str, amount: int):
     if flag:
         position = ' '.join([str(7 - int(coord_x)), coord_y])
     else:
-        temp_num = amount / 6 + 1
+        temp_num = amount // 6 + 1
         position = ' '.join([coord_x, str(temp_num - int(coord_y))])
 
     return position

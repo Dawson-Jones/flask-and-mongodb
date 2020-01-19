@@ -33,6 +33,3 @@ def modify_panel_config():
 def modify_thresholds():
     data = request.get_json()
     return yc_db.el_panel_thresholds_modify(data)
-
-
-
